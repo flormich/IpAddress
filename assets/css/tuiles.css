@@ -1,0 +1,70 @@
+.fontTableau {
+    text-align: center;
+    padding : 10px 5px 10px 5px;
+    background-color: #F3F3F3;
+    border:1px solid black;
+    width:145px;
+    height:18rem;
+    vertical-align: top;
+    top:5px;
+}
+
+/* Couleurs */
+.colorRed {
+    color:red;
+}
+.colorGreen {
+    color:green;
+}
+.colorBlue {
+    color:#1D1BA5 ;
+}
+.colorPurple {
+    color: purple;
+}
+.colorPeru {
+    color: peru;
+}
+.colorDarkViolet {
+    color: darkviolet;
+}
+
+.borderSpacer {
+    margin:auto;
+    border-spacing:15px;
+}
+
+.iconTop {
+    margin-left:100px;
+    border-spacing:25px;
+}
+
+.icoDroit {
+    width:30%;
+    position:relative;
+    float:right;
+    bottom:0px;
+}
+
+.heightTitle{
+    width:100%;
+    height:70px;
+    vertical-align:top;
+}
+
+.heightInfo{
+    width:100%;
+    height:160px;
+    vertical-align:top;
+}
+
+.heightDelete{
+    width:100%;
+    height:100%;
+    vertical-align:bottom;
+}
+
+.heightTable{
+    width:100%;
+    height:100%;
+}

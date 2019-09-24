@@ -1,0 +1,9 @@
+{
+    "name": "lorge/ip-address",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
