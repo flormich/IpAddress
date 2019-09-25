@@ -5,42 +5,63 @@
         "controller" : "ControllerAddress",
         "action" : "displayIpAddress"  
     },
+    
+    "ipComputer" : {
+        "method" : "get",
+        "path" : "/public/index.php/pingComputer",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressComputer"  
+    },
+
+    "ipServ" : {
+        "method" : "get",
+        "path" : "/public/index.php/pingSrv",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressSrv" 
+    },
 
     "ping_delete": {
         "method" : "get",
-        "path" : "/public/delete/([\\d]{3}.[\\d]{3}.[\\d]{1}.[\\d]{1-3})",
+        "path" : "/public/index.php/delete/(192.168.[0-1]{1}.[\\d]{1,3})",
         "controller" : "ControllerAddress",
         "action" : "deleteIpAddress"
     },
 
 
 
-    "ipCreate": {
-        "method" : "post",
-        "path" : "/public/ip/create",
+
+
+
+
+    "ping_computer": {
+        "method" : "get",
+        "path" : "/public/pingComputer",
         "controller" : "ControllerAddress",
-        "action" : "createIpAddress"
+        "action" : "displayIpAddressComputer"
     },
 
-    "ping": {
-        "method" : "post",
-        "path" : "/template/app/ping",
+    "helloWorld": {
+        "method" : "get",
+        "path" : "/public/Hello",
         "controller" : "ControllerAddress",
-        "action" : "createIpAddress"
+        "action" : "helloWorld"
     },
+
+    "show" : {
+        "method" : "get",
+        "path" : "/public/show",
+        "controller" : "PingController",
+        "action" : "show"
+    },
+
+
+
 
     "deletePing": {
         "method" : "post",
         "path" : "/app/delete",
         "controller" : "ControllerAddress",
         "action" : "deleteIpAddressAll"
-    },  
-
-    "roles": {
-        "method" : "get",
-        "path" : "/public/roles",
-        "controller" : "ControllerAddress",
-        "action" : "createIpAddress"
     }
 }
 

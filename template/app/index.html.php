@@ -1,6 +1,5 @@
 <?php 
-	include __DIR__ . "/../baseOpen.html.php"; 
-
+	include __DIR__ . "/../baseOpen.html.php";
 ?>
 
 <!-- <div >
@@ -95,7 +94,7 @@
 							</tr>
 							<tr class="heightDelete">
 								<td>
-									<a href="./delete/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="../../assets/img/Full Trash.png" alt="delete" title="Delete de <?= $ipAddress->getIp()?>" ></a>
+									<a href="/public/index.php/delete/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="../../assets/img/Full Trash.png" alt="delete" title="Delete de <?= $ipAddress->getIp()?>" ></a>
 								</td>
 							</tr>
 						</table>

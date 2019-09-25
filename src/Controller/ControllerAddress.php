@@ -24,6 +24,40 @@ class ControllerAddress extends Controller
         ]);
     }
 
+    public function displayIpAddressComputer()
+    {
+        $pdo = $this->getPdo();
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE type_mat = "PC" OR type_mat = "MAC"';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses = $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
+        
+        return $this->render("app/index.html.php", [
+            "ipAddresses" => $ipAddresses,
+        ]);
+    }
+
+    public function displayIpAddressSrv()
+    {
+        $pdo = $this->getPdo();
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE type_mat = "SRV" ';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses = $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
+        
+        return $this->render("app/index.html.php", [
+            "ipAddresses" => $ipAddresses,
+        ]);
+    }
+
+
+
+    public function helloWorld()
+    {
+        $var = "Hello World";
+        echo $var;
+    }
+
     public function createIpAddress()
     {
         for ($RESEAU = 0; $RESEAU <= 1; $RESEAU++)
@@ -140,16 +174,17 @@ class ControllerAddress extends Controller
         //     ]);                        
     }
 
-    public function deleteIpAddress($ip)
+    public function deleteIpAddress()
     {
-        $sql = "DELETE FROM IpAddress WHERE IpAddress.ip =:ip";
-        $sth = $this->getPdo()->prepare($sql);
-        $sth->bindValue(":ip", $ip, \PDO::PARAM_INT);
-        $sth->execute();
-        $response = $this->getResponse();
-        $response->setHeader([
-            "Location" => "../../public"
-        ]);
-        return $response;
+        echo "ControllerAddress/deleteIpAdress";
+        // $sql = "DELETE FROM IpAddress WHERE IpAddress.ip =:ip";
+        // $sth = $this->getPdo()->prepare($sql);
+        // $sth->bindValue(":ip", $ip, \PDO::PARAM_INT);
+        // $sth->execute();
+        // $response = $this->getResponse();
+        // $response->setHeader([
+        //     "Location" => "../../public"
+        // ]);
+        // return $response;
     }
 }
