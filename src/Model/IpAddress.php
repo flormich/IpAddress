@@ -47,7 +47,7 @@ class IpAddress
      */ 
     public function getId()
     {
-        return $this->id_ipAddress;
+        return $this->id;
     }
 
     /**

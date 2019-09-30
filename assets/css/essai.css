@@ -1,8 +1,21 @@
-.essai {
-    float: right;
-    margin-bottom: 0%;
-    float: inline-end;
-    align-items: baseline;
-    text-align: start;
-    vertical-align: top;
-}
+
+/* On montre le premier texte */
+.text-base{
+     opacity:1;
+     color:red;
+  }
+  /* On cache le second texte */
+  .text-hover{
+     display:none;
+  }
+  /* On fait disparaitre le premier texte au passage de la souris. */
+  .infobulle:hover span.text-base{
+     display:none;
+  }
+  /* On fait apparaitre le second texte au passage de la souris. */
+  .infobulle:hover span.text-hover{
+     display:inherit;
+     color: red;
+     /* color: seagreen; */
+     font-weight: bold;
+  }

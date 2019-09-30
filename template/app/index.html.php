@@ -11,22 +11,28 @@
 </div> -->
 
 <div class="demo-list-action ">
-	<table class="borderSpacer">
+	<table class="borderSpacer ">
 			<?php
 				$nbrDIpParLigne = 11;
-				$nbrDeIp = 510;
-				$nbrDeLigne = $nbrDeIp / $nbrDIpParLigne;
-			?>
-			<?php for ($i = 0; $i<$nbrDeLigne; $i++) { ?>
+				$nbrDIp = 510;
+				$nbrDeLigne = $nbrDIp / $nbrDIpParLigne;
+
+			 for ($i = 0; $i<$nbrDeLigne; $i++) { ?>
 			<tr>
 				<?php foreach($ipAddresses as $key=>$ipAddress): ?>
 				<?php
 				if ($key >= ($nbrDIpParLigne * $i) && $key < ($nbrDIpParLigne * ($i+1))) { ?>
-					<td class="fontTableau">
+					<?php if ($ipAddress->getStatus() == 'Ko') 
+					{
+						?> <td class="fontTableau fontTableauKo"> <?php
+					} else { 
+						?> <td class="fontTableau fontTableauOK"> <?php 
+					} 
+						?>
 						<table class="heightTable">
 							<tr class="heightTitle">
 								<td>
-									<?= $ipAddress->getIp();?>
+									<?=	$ipAddress->getIp();?>
 									<br>
 
 									<?php 
@@ -72,9 +78,15 @@
 								<td>
 									<?php
 										if (!empty($ipAddress->getDateDernOn())){
-											echo date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn()));											
+											if($ipAddress->getStatus() == 'OK'){
+												echo "" . "<br>";
+												echo date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn()));											
+											} else {
+												echo "Dernier ping OK : " . "<br>";
+												echo date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn()));											
+											}																				
 										} else {
-											echo " ";
+											echo " No date";
 										}
 									?>
 									<br>
@@ -84,17 +96,44 @@
 									<img src="../../assets/img/Renew.png" style="width:50%">
 									<?php
 										} else {
-									?>								
-									<img src="../../assets/img/Stop.png" style="width:50%">
-									<?php
-										echo date('d/m/Y', strtotime($ipAddress->getDateKo())). "<br>" . date('H:i', strtotime($ipAddress->getDateKo()));
-									};
 									?>	
+									<div>
+										<img src="../../assets/img/Stop.png" style="width:50%">
+										<span class="infobulle">
+											
+											<span class="text-hover">
+												<?php
+												$timeNow = date('d-m-Y H:i');
+												$dateKo = $ipAddress->getDateKo();	
+												
+												$datetime1 = new DateTime($timeNow);
+												$datetime2 = new DateTime($dateKo);
+												$difference = $datetime1->diff($datetime2);
+												echo 
+												"<br>" . 'Ko depuis : ' ."<br>" 
+												.$difference->y.' an - '																							
+												.$difference->m.' mois - '
+												.$difference->d.' j ' ."<br>"
+												.$difference->h.'h ' 
+												.$difference->i. 'min';										
+												?>
+											</span>
+											
+											<span class="text-base">									
+												<?php
+												echo "<br>" . "Ko depuis le : " . "<br>";
+												echo date('d/m/Y', strtotime($ipAddress->getDateKo())). "<br>" . date('H:i', strtotime($ipAddress->getDateKo())) . "<br>";
+											};
+												?>
+											</span>
+										</span>
+									</div>
 								</td>
 							</tr>
 							<tr class="heightDelete">
 								<td>
 									<a href="/public/index.php/delete/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="../../assets/img/Full Trash.png" alt="delete" title="Delete de <?= $ipAddress->getIp()?>" ></a>
+									<a href="/public/index.php/edit/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="../../assets/img/edit_2.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>" ></a>
 								</td>
 							</tr>
 						</table>

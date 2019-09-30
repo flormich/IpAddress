@@ -1,7 +1,8 @@
 
-          </div>
+            </div>
+          </main>
         </main>
-      </main>
+      </header>
     </div>
   </body>
 </html>

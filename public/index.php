@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <!-- ACTUALISATION / REFRESH / RAFRAICHIR / actualiser / refresh / actualisation-->
-        <META HTTP-EQUIV="Refresh" CONTENT="900; URL=/template/app/pingUpdate.html.php">
+        <!-- RAFRAICHIR / ACTUALISATION / REFRESH / RAFRAICHIR / rafraichir / actualiser / refresh / actualisation-->
+        <META HTTP-EQUIV="Refresh" CONTENT="600; URL=/public/index.php/ipUpdate">
     </head>
 </html>
 
@@ -10,8 +10,8 @@
 
 use App\Http\Response;
 
-require __DIR__ . '/../vendor/autoload.php';                                
-
+require __DIR__ . '/../vendor/autoload.php';   
+    
 $content = file_get_contents(__DIR__ . '/../config/route.json');            
 $routes = json_decode($content);  
 $uri = filter_input(INPUT_SERVER, "REDIRECT_URL");   

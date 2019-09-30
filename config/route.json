@@ -5,6 +5,13 @@
         "controller" : "ControllerAddress",
         "action" : "displayIpAddress"  
     },
+
+    "ipUpdate" : {
+        "method" : "get",
+        "path" : "/public/index.php/ipUpdate",
+        "controller" : "ControllerAddress",
+        "action" : "updateIpAddress"
+    },
     
     "ipComputer" : {
         "method" : "get",
@@ -18,50 +25,76 @@
         "path" : "/public/index.php/pingSrv",
         "controller" : "ControllerAddress",
         "action" : "displayIpAddressSrv" 
-    },
+    },  
 
-    "ping_delete": {
+    "ipPrinter" : {
+        "method" : "get",
+        "path" : "/public/index.php/printer",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressPrinter" 
+    },  
+
+    "ipLabel" : {
+        "method" : "get",
+        "path" : "/public/index.php/label",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressLabel" 
+    },  
+
+    "ipOversight" : {
+        "method" : "get",
+        "path" : "/public/index.php/oversight",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressOversight" 
+    },  
+
+    "ipOther" : {
+        "method" : "get",
+        "path" : "/public/index.php/other",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressOther" 
+    },  
+
+    "ipOK" : {
+        "method" : "get",
+        "path" : "/public/index.php/ok",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressOK" 
+    },  
+
+    "ipKo" : {
+        "method" : "get",
+        "path" : "/public/index.php/ko",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressKo" 
+    },  
+
+    "deleteOnePing": {
         "method" : "get",
         "path" : "/public/index.php/delete/(192.168.[0-1]{1}.[\\d]{1,3})",
         "controller" : "ControllerAddress",
         "action" : "deleteIpAddress"
     },
 
-
-
-
-
-
-
-    "ping_computer": {
+    "editOnePing": {
         "method" : "get",
-        "path" : "/public/pingComputer",
+        "path" : "/public/index.php/edit/(192.168.[0-1]{1}.[\\d]{1,3})",
         "controller" : "ControllerAddress",
-        "action" : "displayIpAddressComputer"
+        "action" : "updateOneIpAddress"
     },
 
-    "helloWorld": {
-        "method" : "get",
-        "path" : "/public/Hello",
-        "controller" : "ControllerAddress",
-        "action" : "helloWorld"
-    },
-
-    "show" : {
-        "method" : "get",
-        "path" : "/public/show",
-        "controller" : "PingController",
-        "action" : "show"
-    },
-
-
-
-
-    "deletePing": {
+    "deleteTousLesPing": {
         "method" : "post",
-        "path" : "/app/delete",
+        "path" : "/public/index.php/deleteAll",
         "controller" : "ControllerAddress",
         "action" : "deleteIpAddressAll"
+    },
+
+    "envoiePingOkdansBdd" : {
+        "method" : "get",
+        "path" : "/public/index.php/pingOkDansBDD",
+        "controller" : "ControllerAddress",
+        "action" : "createIpAddress"
     }
 }
 
