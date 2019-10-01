@@ -1,82 +1,176 @@
 <?php
-include __DIR__ . "/../baseOpen.html.php";?>
+	include __DIR__ . "/../baseOpen.html.php";
+	?><br>
 
+<div class="demo-list-action ">
+	<table class="borderSpacer ">
+		<tr>
+			<?php foreach($ipAddresses as $key=>$ipAddress): ?>
+			<?php if ($ipAddress->getStatus() == 'Ko')
+				{
+					?> 
+					<td class="fontTableau fontTableauKo"> <?php
+				} else {
+					?> 
+					<td class="fontTableau fontTableauOK"> <?php
+				}
+					?>
+						<table class="heightTable">
+							<tr class="heightTitle">
+								<td>
+									<?=	$ipAddress->getIp();?>
+									<br>
 
-<!-- Textfield with Floating Label -->
+									<?php
+									switch ($ipAddress->getTypeMat()) 
+									{
+										case 'PC':
+										?>
+											<b style="color:#B2892C">
+												<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")";
+											break;
+										case 'MAC':
+											?>
+											<b style="color:#B2892C">
+												<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")";
+											break;
+										case 'Etiquette':
+										?>
+											<b style="color:DarkViolet">
+												<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")";
+											break;
+										case 'Imprimante' :
+										?>
+											<b style="color:#6DA329">
+												<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")";
+											break;
+										case 'SRV' :
+										?>
+											<b style="color:#B22C2C">
+												<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")";
+											break;
 
-<ul class="mdl-grid demo-list-icon mdl-list mdl-cell--6-col">
-  <li class="mdl-list__item mdl-grid center-items">
-    <h3>Update Manual</h3>
-  </li>
-</ul>
+										default:
+										?>
+											<b style="color:Blue">
+												<?= $ipAddress->getName(); ?>
+											</b>
+											<?php
+									}
+									?>
+								</td>
+							</tr>
 
-<div class="mdl-grid">
-  <form method="post" action="products/create">
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
-      <input class="mdl-textfield__input" type="text" name="name">
-      <label class="mdl-textfield__label" for="sample3">Create Name Products</label>
-    </div>
+							<tr class="heightInfo">
+								<td>
+									<?php
+										if (!empty($ipAddress->getDateDernOn()))
+										{
+											if($ipAddress->getStatus() == 'OK'){
+												echo "" . "<br>";
+												echo date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn()));
+											} else {
+												echo "Dernier ping OK : " . "<br>";
+												echo date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn()));
+											}
+										} else {
+											echo " No date";
+										}
+									?>
+									<br>
+									<?php if($ipAddress->getStatus() == 'OK')
+										{
+										?>
+									<img src="/assets/img/Renew.png" style="width:50%">
+									<?php
+										} else {
+											?>
+									<div>
+										<img src="/assets/img/Stop.png" style="width:50%">
+										<span class="infobulle">
 
-    <?php
-        foreach($ipAddresses as $ipAddress){
-        }
-    ?>
-      
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" name="category_id">
-      <label class="mdl-textfield__label" for="sample3"><?php echo $ipAddress->getIp(); ?> </label>
-    </div>
+											<span class="text-hover">
+												<?php
+												$timeNow = date('d-m-Y H:i');
+												$dateKo = $ipAddress->getDateKo();
+												
+												$datetime1 = new DateTime($timeNow);
+												$datetime2 = new DateTime($dateKo);
+												$difference = $datetime1->diff($datetime2);
+												echo
+													"<br>" . 'Ko depuis : ' ."<br>"
+													.$difference->y.' an - '
+													.$difference->m.' mois - '
+													.$difference->d.' j ' ."<br>"
+													.$difference->h.'h '
+													.$difference->i. 'min';
+													?>
+											</span>
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" name="unit">
-      <label class="mdl-textfield__label" for="sample3">Create qté Unitaire</label>
-    </div>
-
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="text" name="gram">
-      <label class="mdl-textfield__label" for="sample3">Create qté en Gramme</label>
-    </div>
-
-  </form>
+											<span class="text-base">
+												<?php
+												echo "<br>" . "Ko depuis le : " . "<br>";
+												echo date('d/m/Y', strtotime($ipAddress->getDateKo())). "<br>" . date('H:i', strtotime($ipAddress->getDateKo())) . "<br>";
+											};
+												?>
+											</span>
+										</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="heightDelete">
+								<td>
+									<a href="/public/index.php/delete/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="/assets/img/Full Trash.png" alt="delete" title="Delete de <?= $ipAddress->getIp()?>" ></a>
+									<a href="/public/index.php/edit/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="/assets/img/edit_2.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>" ></a>
+								</td>
+							</tr>
+						</table>
+					</td>		
+					<td>
+						<table>
+							<form method="post" action="#">
+								<tr>
+									<td>Id : </td>
+									<td><input disabled type="text" name="id" value="<?php echo $ipAddress->getId() ?>"></td>
+								</tr>
+								<tr>
+									<td>Ip : </td>
+									<td><input type="text" name="ip" value="<?php echo $ipAddress->getIp() ?>"></td>
+								</tr>
+								<tr>
+									<td>Status : </td>
+									<td><input type="text" name="status" value="<?php echo $ipAddress->getStatus() ?>"></td>
+								</tr>
+								<tr>
+									<td>date_dern_on : </td>
+									<td><input type="text" name="dateDernOn" value="<?php echo $ipAddress->getDateDernOn() ?>"></td>
+								</tr>
+								<tr>
+									<td>date_ko : </td>
+									<td><input type="text" name="dateKo" value="<?php if ($ipAddress->getStatus() == "OK") {echo "";} else {echo $ipAddress->getDateKo();}; ?>"></td>
+								</tr>
+								<tr>
+									<td>name : </td>
+									<td><input type="text" name="name" value="<?php echo $ipAddress->getName() ?>"></td>
+								</tr>
+								<tr>
+									<td>type_mat : </td>
+									<td><input type="text" name="typeMat" value="<?php echo $ipAddress->getTypeMat() ?>"></td>
+								</tr>
+								<tr style="height:20px"></tr>
+								<tr>									
+									<td></td>
+									<td>
+										<a href="/public/index.php/edit/ok"> <img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit"> </a>
+									</td>
+								</tr>
+							</form>
+						</table>						
+					</td>
+			<?php endforeach; ?>
+			</tr>
+			</td>
+		</tr>
+	</table>
 </div>
-
-<ul class="mdl-grid demo-list-icon mdl-list mdl-cell--6-col">
-  <li class="mdl-list__item mdl-grid center-items">
-    <h3>Products</h3>
-  </li>
-</ul>
-
-<div class="demo-list-action mdl-list mdl-cell mdl-cell--10-col text-center">
-  <div class="mdl-list__item">
-    <span class="mdl-list__item-primary-content">
-      <table class="fontTableau" border="1">
-        <ul>
-          <tr>
-            <th>Name</th>
-            <th>Id</th>
-            <th>Ip</th>
-            <th>Status</th>
-            <th>Date dernier ON</th>
-            <th>Date Ko</th> 
-            <th>Type de matériel</th> 
-          </tr>
-        </ul>
-        <ul>
-        <?php foreach ($ipAddresses as $ipAdress): ?>
-          <tr>
-            <td><?=$ipAdress->getName()?></td>
-            <td><?=$ipAdress->getId()?></td>
-            <td><?=$ipAdress->getIp()?></td>
-            <td><?=$ipAdress->getStatus()?></td>
-            <td><?=$ipAdress->getDateDernOn()?></td>
-            <td><?=$ipAdress->getDateKo()?></td>
-            <td><?=$ipAdress->getTypeMat()?></td>
-          </tr>
-        <?php endforeach;?>
-        </ul>
-      </table>
-    </span>
-  </div>
-</div>
-<?php
-include __DIR__ . "/../baseClose.html.php";?>
+<?php include __DIR__ . "/../baseClose.html.php"; ?>

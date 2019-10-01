@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use EvTimer;
+// use EvTimer;
 use App\Model\IpAddress;
 use App\Controller\Controller;
 use App\Controller\PingController;
@@ -130,6 +130,20 @@ class ControllerAddress extends Controller
         ]);
     }
 
+    public function displayOneIpAddress($ip)
+    {
+        $pdo = $this->getPdo();
+        $sql = "SELECT ip, status, date_dern_on, date_ko, name, type_mat  FROM IpAddress WHERE ip='$ip'";
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+
+        return $this->render("app/updateOneIp.html.php", [
+            "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);        
+    }
+
     //Create IpAddress
     public function createIpAddress()
     {
@@ -161,6 +175,8 @@ class ControllerAddress extends Controller
             }
         }
     }
+
+
 
     //Update IpAddress
     public function updateIpAddress()
@@ -198,34 +214,22 @@ class ControllerAddress extends Controller
         header('Location: ../../public');
     }
 
-    // public function updateOneIpAddress()
-    // {        
-    //     $pdo = $this->getPdo();
-    //     // $sql = "UPDATE IpAddress ";
-    //     $sql = 'SELECT ip, status, id_ipAddress, date_dern_on, date_ko, ip_Num, type_mat, name  FROM IpAddress ';
-    //     $sth = $pdo->prepare($sql);
-    //     $sth->execute();
-    //     $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
-
-    //     return $this->render("/app/updateOneIp.html.php", [
-    //         "ipAddresses" => $ipAddresses,
-    //         // "token" => $this->isCsrfTokenValid(),
-    //     ]);
-    // }
-
     public function updateOneIpAddress($ip)
     {
         $pdo = $this->getPdo();
-        $sql = "SELECT ip, status, date_dern_on, date_ko, type_mat, name  FROM IpAddress WHERE ip='$ip'";
+        $sql = "UPDATE IpAddress SET status ='', date_dern_on='', date_ko='', ip_Num ='', name ='', type_mat ='' WHERE ip = '$ip' ";
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
 
-        return $this->render("app/updateOneIp.html.php", [
-            "ipAddresses" => $ipAddresses,
-            // "token" => $this->isCsrfTokenValid(),
-        ]);
+        // return $this->render("app/updateOneIp.html.php", [
+        //     "ipAddresses" => $ipAddresses,
+        //     // "token" => $this->isCsrfTokenValid(),
+        // ]);  
+        header('Location: ../../public');
     }
+
+
 
     //Delete IpAddress
     public function deleteIpAddressAll()

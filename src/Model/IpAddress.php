@@ -13,41 +13,17 @@ class IpAddress
     private $name;
     private $type_mat;
 
-    public function getIp()
-    {
-        return $this->ip;
-    }
-
-    /**
-     * Get the value of dateDernOn
-     */ 
-    public function getDateDernOn()
-    {
-        return $this->date_dern_on;
-    }
-
-    /**
-     * Get the value of dateKo
-     */ 
-    public function getDateKo()
-    {
-        return $this->date_ko;
-    }
-
-    /**
-     * Get the value of status
-     */ 
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
     /**
      * Get the value of id
      */ 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getIp(): string
+    {
+        return $this->ip;
     }
 
     /**
@@ -63,15 +39,11 @@ class IpAddress
     }
 
     /**
-     * Set the value of status
-     *
-     * @return  self
+     * Get the value of dateDernOn
      */ 
-    public function setStatus($status)
+    public function getDateDernOn()
     {
-        $this->status = $status;
-
-        return $this;
+        return $this->date_dern_on;
     }
 
     /**
@@ -87,6 +59,14 @@ class IpAddress
     }
 
     /**
+     * Get the value of dateKo
+     */ 
+    public function getDateKo()
+    {
+        return $this->date_ko;
+    }
+
+    /**
      * Set the value of dateKo
      *
      * @return  self
@@ -94,6 +74,26 @@ class IpAddress
     public function setDateKo($dateKo)
     {
         $this->dateKo = $dateKo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of status
+     */ 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @return  self
+     */ 
+    public function setStatus($status)
+    {
+        $this->status = $status;
 
         return $this;
     }
@@ -157,4 +157,6 @@ class IpAddress
 
         return $this;
     }
+
+
 }
