@@ -9,7 +9,7 @@ class IpAddress
     private $status;
     private $dateDernOn;
     private $dateKo;
-    private $ipNum;
+    private $ip_Num;
     private $name;
     private $type_mat;
 
@@ -91,7 +91,7 @@ class IpAddress
      *
      * @return  self
      */ 
-    public function setStatus($status)
+    public function setStatus(string $status)
     {
         $this->status = $status;
 
@@ -103,7 +103,7 @@ class IpAddress
      */ 
     public function getIpNum()
     {
-        return $this->ipNum;
+        return $this->ip_Num;
     }
 
     /**
@@ -111,7 +111,7 @@ class IpAddress
      *
      * @return  self
      */ 
-    public function setIpNum($ipNum)
+    public function setIpNum(int $ipNum)
     {
         $this->ipNum = $ipNum;
 
@@ -131,7 +131,7 @@ class IpAddress
      *
      * @return  self
      */ 
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
 
@@ -151,12 +151,10 @@ class IpAddress
      *
      * @return  self
      */ 
-    public function setTypeMat($typeMat)
+    public function setTypeMat(string $typeMat)
     {
         $this->typeMat = $typeMat;
 
         return $this;
     }
-
-
 }

@@ -62,11 +62,18 @@
 											<b style="color:#B22C2C">
 											<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")";
 											break;
+										case '' :
+											?>
+											<b style="color:Blue">
+											<?= $ipAddress->getName() . "<br>" ?></b>
+											<i style="color:Grey">
+											<?= " ( Type: ?? )";
+											break;
 
 										default:
 											?>
 											<b style="color:Blue">
-											<?= $ipAddress->getName(); ?>
+											<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")"; ?>
 											</b>
 											<?php
 									}

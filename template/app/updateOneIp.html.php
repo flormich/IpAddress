@@ -128,14 +128,18 @@
 					</td>		
 					<td>
 						<table>
-							<form method="post" action="#">
+							<form method="post" action="inserer">
 								<tr>
 									<td>Id : </td>
-									<td><input disabled type="text" name="id" value="<?php echo $ipAddress->getId() ?>"></td>
+									<td><input readonly type="number" name="id" style="background-color:#EBEBE4" value="<?php echo $ipAddress->getId() ?>"></td>
 								</tr>
+								<!-- <tr>
+									<td>Ip Numérique : </td>
+									<td><input readonly type="number" name="ip_Num" style="background-color:#EBEBE4" value="<?php echo $ipAddress->getIpNum() ?>"></td>
+								</tr> -->
 								<tr>
 									<td>Ip : </td>
-									<td><input type="text" name="ip" value="<?php echo $ipAddress->getIp() ?>"></td>
+									<td><input readonly type="text" name="ip" style="background-color:#EBEBE4" value="<?php echo $ipAddress->getIp() ?>"></td>
 								</tr>
 								<tr>
 									<td>Status : </td>
@@ -160,9 +164,10 @@
 								<tr style="height:20px"></tr>
 								<tr>									
 									<td></td>
-									<td>
-										<a href="/public/index.php/edit/ok"> <img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit"> </a>
-									</td>
+									<td><input type="submit" value="insérer"></td>
+									<!-- <td>
+										<a href="/public/index.php/edit/<?= $ipAddress->getIp()?>/ok"> <img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit"> </a>
+									</td> -->
 								</tr>
 							</form>
 						</table>						

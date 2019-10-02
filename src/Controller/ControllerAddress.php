@@ -15,7 +15,7 @@ class ControllerAddress extends Controller
     public function displayIpAddress()
     {
         $pdo = $this->getPdo();
-        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name  FROM IpAddress ORDER BY ip_Num';
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress ORDER BY ip_Num';
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
@@ -120,7 +120,7 @@ class ControllerAddress extends Controller
     public function displayIpAddressKo()
     {
         $pdo = $this->getPdo();
-        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE status = "Ko"';
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE status = "Ko" ORDER BY ip_num ASC';
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $ipAddresses = $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
@@ -133,7 +133,7 @@ class ControllerAddress extends Controller
     public function displayOneIpAddress($ip)
     {
         $pdo = $this->getPdo();
-        $sql = "SELECT ip, status, date_dern_on, date_ko, name, type_mat  FROM IpAddress WHERE ip='$ip'";
+        $sql = "SELECT id, ip_Num, ip, status, date_dern_on, date_ko, name, type_mat  FROM IpAddress WHERE ip='$ip'";
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
@@ -142,6 +142,48 @@ class ControllerAddress extends Controller
             "ipAddresses" => $ipAddresses,
             // "token" => $this->isCsrfTokenValid(),
         ]);        
+    }
+
+    public function displayIpAddressByDateKo()
+    {
+        $pdo = $this->getPdo();
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE status = "Ko" ORDER BY date_ko ASC';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+
+        return $this->render("app/index.html.php", [
+            "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);
+    }
+
+    public function displayIpAddressByName()
+    {
+        $pdo = $this->getPdo();
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress ORDER BY name ASC';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+
+        return $this->render("app/index.html.php", [
+            "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);
+    }
+
+    public function displayIpAddressByTypeMat()
+    {
+        $pdo = $this->getPdo();
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress ORDER BY type_mat ASC';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+
+        return $this->render("app/index.html.php", [
+            "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);
     }
 
     //Create IpAddress
@@ -214,19 +256,27 @@ class ControllerAddress extends Controller
         header('Location: ../../public');
     }
 
-    public function updateOneIpAddress($ip)
+    public function updateOneIpAddress()
     {
+        $ip = $_POST["ip"];
+        $status = $_POST["status"];
+        $dateDernOn = $_POST["dateDernOn"];
+        $dateKo = $_POST["dateKo"];
+        $name = $_POST["name"];
+        $typeMat = $_POST["typeMat"];
+
+        $sql = "UPDATE IpAddress SET status = '$status', date_dern_on = '$dateDernOn', date_ko = '$dateKo', name = '$name', type_mat = '$typeMat' WHERE ip = '$ip' ";
         $pdo = $this->getPdo();
-        $sql = "UPDATE IpAddress SET status ='', date_dern_on='', date_ko='', ip_Num ='', name ='', type_mat ='' WHERE ip = '$ip' ";
         $sth = $pdo->prepare($sql);
         $sth->execute();
-        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+        $response = $this->getResponse();        
+
 
         // return $this->render("app/updateOneIp.html.php", [
         //     "ipAddresses" => $ipAddresses,
         //     // "token" => $this->isCsrfTokenValid(),
         // ]);  
-        header('Location: ../../public');
+        header('Location: /public/');
     }
 
 

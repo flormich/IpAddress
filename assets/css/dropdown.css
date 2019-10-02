@@ -1,0 +1,71 @@
+.DropDownMenu {
+     background: linen;
+     border: 1px solid black;
+     box-shadow: inset -2px -2px #555;
+ }
+
+ul ul {
+     display: none; 
+     position: absolute; 
+     left: 0px; 
+     /* width: 150px; */
+     top: 60px; 
+     margin:0px; 
+     padding: 0px; 
+     border: 1px solid grey;
+}
+
+li {
+     list-style-type: none; 
+     position: relative; 
+     /* width: 80px;  */
+     /* background-color: #E0E0E0;  */
+     padding: 2px; 
+     margin: 0px
+}
+
+li:hover {
+     background-color: rgba(158, 158, 158, 0.3);
+}
+
+li:hover ul.niveau2, li:hover ul.niveau2Dropdown2, li li:hover ul.niveau3 {
+     display: block
+}
+
+li.plus {
+     background-position:right; 
+     background-image: url(illustrations/fdroite.gif); 
+     background-repeat: no-repeat; 
+     border-bottom: 1px solid grey;
+}
+
+.niveau1 {
+     height: 100%;
+     padding: 5px 0px 0px 1em;
+     /* background-color: yellow; */
+     width: 4rem;
+}
+
+.niveau2 {
+     padding: 10px 2px 10px 2px;
+     width: 10rem;
+}
+
+.niveau2Dropdown2 {
+     padding: 10px 2px 10px 2px;
+     width: 12rem;
+}
+
+.niveau3 {
+     top: 0px;
+     width: 200px;
+     left: 200px;
+}
+
+.icoNiveau1 {
+     width: 4rem;
+}
+
+.icoNiveau2 {
+     width: 3rem;
+}

@@ -102,6 +102,34 @@
         "path" : "/public/index.php/pingOkDansBDD",
         "controller" : "ControllerAddress",
         "action" : "createIpAddress"
+    },
+
+    "displayIpAddressByDateKo" : {
+        "method" : "get",
+        "path" : "/public/index.php/byDateKo",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressByDateKo"
+    },
+
+    "displayIpAddressByName" : {
+        "method" : "get",
+        "path" : "/public/index.php/byName",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressByName"
+    },
+
+    "displayIpAddressByTypeMat" : {
+        "method" : "get",
+        "path" : "/public/index.php/byTypeMat",
+        "controller" : "ControllerAddress",
+        "action" : "displayIpAddressByTypeMat"
+    },
+
+    "inserer" : {
+        "method" : "post",
+        "path" : "/public/index.php/edit/inserer",
+        "controller" : "ControllerAddress",
+        "action" : "updateOneIpAddress"
     }
 }
 
