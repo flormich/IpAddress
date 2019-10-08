@@ -13,9 +13,9 @@
 <div class="demo-list-action ">
 	<table class="borderSpacer ">
 		<?php
-			$nbrDIpParLigne = 11;
-			$nbrDIp = 510;
-			$nbrDeLigne = $nbrDIp / $nbrDIpParLigne;
+		$nbrDIpParLigne = 11;
+		$nbrDIp = 510;
+		$nbrDeLigne = $nbrDIp / $nbrDIpParLigne;
 
 		for ($i = 0; $i<$nbrDeLigne; $i++) { ?>
 			<tr>

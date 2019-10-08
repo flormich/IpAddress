@@ -55,6 +55,24 @@
     border-spacing:15px;
 }
 
+/* .border {
+    margin:auto;
+    border: solid 1px #1D1BA5;
+} */
+
+.border {
+    margin: auto;
+    text-align: center;
+    padding : 10px 5px 10px 5px;
+    border:1px solid black;
+    width:150px;
+    vertical-align: top;
+    top:5px;
+    box-shadow: 3px 3px 3px rgb(119, 119, 119);
+    border-radius: 0.8em;
+    text-shadow: 0.2px 0.2px 0.2px black;
+}
+
 .iconTop {
     margin-left:100px;
     border-spacing:25px;

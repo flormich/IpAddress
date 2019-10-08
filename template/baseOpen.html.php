@@ -39,7 +39,7 @@
           <!-- home -->
             <a href="/public/"><img class="icoNiveau1" src="/assets/img/Home.png" alt="Homepage" title="Homepage"></a>
           <!-- Ping total -->
-            <a class="mdl-navigation__link" href="/template/app/pingTotalite.html.php">Ping Total</a>
+            <a class="mdl-navigation__link"  href="/template/app/pingTotalite.html.php##">Ping Total</a>
           <!-- Ping Update -->
             <a href="/public/index.php/ipUpdate"><img class="icoNiveau1" src="/assets/img/Refresh.png" alt="Update" title="Mise a jour"></a>
 
@@ -87,7 +87,7 @@
           <!-- Drop down 2 --> 
           <ul class="niveau1 ">
             <li>
-              <img class="icoNiveau1" src="/assets/img/Search.png" alt="Sort by " title="Trier par " >
+              <img class="icoNiveau1" src="/assets/img/folders-searches.png" alt="Sort by " title="Trier par " >
               <ul class="niveau2Dropdown2 DropDownMenu">
                 <li>
                   <a href="/public/"><img class="icoNiveau2" src="/assets/img/dedicated-ip.png" alt="sort by ip" title="Trie par IP" ></a> : Ip
@@ -101,10 +101,15 @@
                 <li>
                   <a href="/public/index.php/byTypeMat"><img class="icoNiveau2" src="/assets/img/Headphones.png" alt="sort by material type" title="Trie par type de matériel" ></a> : Type de matériel
                 </li>                                 
+                <li>                                 
+                  <a href="/public/index.php/lastAdd"><img class="icoNiveau2" src="/assets/img/last_add.png" alt="last add" title="Trie par dernier ajout" ></a> : Derniers ajouts
+                </li>                                 
               </ul>
             </li>
           </ul>
             
+          <a href="/public/index.php/freeIp"><img class="ico" src="/assets/img/free.png" alt="Free Ip" title="Ip Libre"></a>
+
           <!-- Space between left icon and dernier ping text -->
             <div class="mdl-layout-spacer"></div>
             <b style="text-align:center"> 
@@ -117,14 +122,17 @@
           <!-- Left icon -->
             <!-- <a class="mdl-navigation__link" href="/public/index.php/pingOkDansBDD">Envoyer les ping Ok dans la BDD</a>           -->
           <!-- Delete Toute la BDD -->
-            <a class="" href="/public/index.php/deleteAll"><img src="/../assets/img/Trash.png" alt="Delete la BDD" title="Delete la BDD" style="width:4rem"></a>
+            <a  href="/public/index.php/deleteAll##"><img class="ico" src="/../assets/img/Trash.png" alt="Delete la BDD" title="Delete la BDD" ></a>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                        mdl-textfield--floating-label mdl-textfield--align-right">                  
-              <!-- <label class="mdl-button mdl-js-button mdl-button--icon"
+                        mdl-textfield--floating-label mdl-textfield--align-right">  
+
+              <label class="mdl-button mdl-js-button mdl-button--icon"
                     for="fixed-header-drawer-exp">
-                <i class="material-icons">search</i>
-              </label> -->
+                    <img src="/assets/img/Search.png" alt="Sort by " title="Trier par" style="width:2.3rem"  >
+                <!-- <i class="material-icons">search</i> -->
+              </label>
+
               <div class="mdl-textfield__expandable-holder">
                 <input class="mdl-textfield__input" type="text" name="sample"
                       id="fixed-header-drawer-exp">

@@ -107,7 +107,7 @@ class ControllerAddress extends Controller
     public function displayIpAddressOK()
     {
         $pdo = $this->getPdo();
-        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE status = "OK"';
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE status = "OK" ORDER BY ip_num ASC';
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $ipAddresses = $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
@@ -185,6 +185,22 @@ class ControllerAddress extends Controller
             // "token" => $this->isCsrfTokenValid(),
         ]);
     }
+
+    public function displayLastAddIpAddress()
+    {
+        $pdo = $this->getPdo();
+        $sql = 'SELECT id, ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress ORDER BY id DESC LIMIT 10';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+
+        return $this->render("app/index.html.php", [
+            "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);
+    }
+
+
 
     //Create IpAddress
     public function createIpAddress()
@@ -279,7 +295,22 @@ class ControllerAddress extends Controller
         header('Location: /public/');
     }
 
+    public function freeIpAddress() {
 
+            $pdo = $this->getPdo();
+            $sql = "SELECT ip, name FROM IpAddress ORDER BY ip_Num ";
+            // $sql = "SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress";
+            $sth = $pdo->prepare($sql);
+            $sth->execute();
+            $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class); 
+
+
+
+        return $this->render("app/freeIp.html.php", [
+            "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);
+    }
 
     //Delete IpAddress
     public function deleteIpAddressAll()

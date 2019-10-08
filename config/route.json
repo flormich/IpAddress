@@ -130,6 +130,22 @@
         "path" : "/public/index.php/edit/inserer",
         "controller" : "ControllerAddress",
         "action" : "updateOneIpAddress"
+    },
+
+    "lastAdd" : {
+        "method" : "get",
+        "path" : "/public/index.php/lastAdd",
+        "controller" : "ControllerAddress",
+        "action" : "displayLastAddIpAddress"
+    },
+
+
+
+    "freeIp" : {
+        "method" : "get",
+        "path" : "/public/index.php/freeIp",
+        "controller" : "ControllerAddress",
+        "action" : "freeIpAddress"
     }
 }
 
