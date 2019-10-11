@@ -15,6 +15,7 @@
       <link rel="stylesheet" href="/assets/css/tuiles.css">
       <link rel="stylesheet" href="/assets/css/essai.css">
       <link rel="stylesheet" href="/assets/css/dropdown.css">
+      <link rel="stylesheet" href="/assets/css/ipFree.css">
 
       <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>   
   </head>  
@@ -102,7 +103,7 @@
                   <a href="/public/index.php/byTypeMat"><img class="icoNiveau2" src="/assets/img/Headphones.png" alt="sort by material type" title="Trie par type de matériel" ></a> : Type de matériel
                 </li>                                 
                 <li>                                 
-                  <a href="/public/index.php/lastAdd"><img class="icoNiveau2" src="/assets/img/last_add.png" alt="last add" title="Trie par dernier ajout" ></a> : Derniers ajouts
+                  <a href="/public/index.php/lastAdd"><img class="icoNiveau2" src="/assets/img/last_add.png" alt="last add" title="Trie par dernier ajout" style="width:2.5rem"></a> : Derniers ajouts
                 </li>                                 
               </ul>
             </li>
