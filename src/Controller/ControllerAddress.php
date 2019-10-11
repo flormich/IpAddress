@@ -130,6 +130,19 @@ class ControllerAddress extends Controller
         ]);
     }
 
+    public function displayIpAddressKoDateKo()
+    {
+        $pdo = $this->getPdo();
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE status = "Ko" ORDER BY date_ko ASC';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses = $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
+        
+        return $this->render("app/index.html.php", [
+            "ipAddresses" => $ipAddresses,
+        ]);
+    }
+
     public function displayOneIpAddress($ip)
     {
         $pdo = $this->getPdo();

@@ -15,67 +15,62 @@
                'ip' => $ipFree = "192.168.0.$ip" ."<br>"
           ];
      }
-
 ?>
 
 <br>
 
 <!-- Display data -->
-<div style="text-align:center">
+<div class="borderSpacer" style="text-align:center">
      <?php
      $i =0;
-     $module = 4;
-
-          ?> 
-          <!-- <table style="margin:auto">  -->
-               <?php
-               for ($o = 0; $o<255; $o++)
-               {
-                    ?> <table style="margin:auto"> <?php
-                    if ($ipBdd[$i] == $ipFreeArray[$o])
-                    {                         
-                         ?> 
-                         <?php if ($module %5 ==0) { ?>
-                              <table><tr>
+     $m = 0;
+     $NbrColonne = 10;
+     ?> 
+     <!-- <table style="margin:auto">  -->
+     <table class="borderTileIpFree borderSpacer" style="margin:auto"> <?php
+          for ($o = 0; $o<255; $o++)
+          {
+               if ($ipBdd[$i] == $ipFreeArray[$o])
+               {                         
+                    ?> 
+                    <?php if ($m == $o ){
+                    ?> </tr><tr> <?php
+                         $m += $NbrColonne;
+                    } else {
+                    }
+                    ?>
+                         <td class="border NotFreeTile" >
+                              <section class="colorTextNotFreeIp">
                                    <?php
-                         } else {?>
-                              <td class="border" >
-                                   <section style="color:red">
-                                        <?php
-                                             echo "192.168.0.$o" . "<br>" . " Ip déjà utilisée";
-                                        ?>
-                                   </section>
-                              </td>
-                              <?php
-                         }
-                              $i++;     
-                    } else {     
-                         ?>
-                              <td class="border">
-                                   <b style="color:blue">
-                                        <?php
-                                             echo "Adresse ip libre " . "<br>";
-                                        ?>
-                                   </b>
-                                   <b style="color:green">
-                                        <?php
-                                             echo "192.168.0.$o" . "<br>";
-                                        ?>                    
-                                   </b>
-                              </td>
-                              <?php
-                              ?>
-                         <?php if ($module % 5 == 0) {
-                              ?> </table></tr> <?php
-                         }
-
-                    }          
-               ?> </table> <?php
-               }
-
-?>
-          <!-- </table> -->
+                                        echo "192.168.0.$o" . "<br>" . " Ip déjà utilisée";
+                                   ?>
+                              </section>
+                         </td>
+                         <?php
+                         $i++;    
+               } else {     
+                    if ($m == $o ){
+                         ?> </tr><tr> <?php
+                         $m += $NbrColonne;
+                    } else {
+                    }
+                    ?>
+                         <td class="border FreeTile">
+                              <b class="colorTextFree">
+                                   <?php
+                                        echo "Adresse ip libre " . "<br>";
+                                   ?>
+                              </b>
+                              <b class="colorTextAddIp">
+                                   <?php
+                                        echo "192.168.0.$o" . "<br>";
+                                   ?>                    
+                              </b>
+                         </td>
+                    <?php
+               }                           
+          }
+     ?> </table>
 </div>
 
 <?php include __DIR__ . "/../baseClose.html.php"; ?>
-          

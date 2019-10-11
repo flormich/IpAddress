@@ -1,0 +1,37 @@
+.FreeTile  {
+     background-color:rgba(255,255,0,0.4);
+}
+
+.NotFreeTile {
+     background-color: rgba(185,0,0,0.07);
+}
+
+.colorTextNotFreeIp {
+     color: rgba(185,0,0, 0.5);
+     font-size: small;
+}
+
+.colorTextAddIp {
+     color: red;
+     text-shadow: 4px 4px 5px LightSlateGray;
+
+}
+
+.colorTextFree {
+     color: blue;
+     text-shadow: 4px 4px 4px LightSlateGray;
+}
+
+.borderTileIpFree {
+     margin: auto;
+     text-align: center;
+     /* padding : 15px 15px 15px 15px; */
+     border:1px solid black;
+     width:99%;
+     /* background-color: rgb(171,171,171); */
+     /* background-color: white; */
+     /* vertical-align: top; */
+     /* top:5px; */
+     box-shadow: 10px 10px 10px black;
+     border-radius: 1em;
+}
