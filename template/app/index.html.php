@@ -22,10 +22,16 @@
 				<?php foreach($ipAddresses as $key=>$ipAddress): ?>
 				<?php
 				if ($key >= ($nbrDIpParLigne * $i) && $key < ($nbrDIpParLigne * ($i+1))) { ?>
-					<?php if ($ipAddress->getStatus() == 'Ko') 
-					{
+
+					<?php 
+					if ($ipAddress->getStatus() == 'Ko' && (($ipAddress->getTypeMat() == 'SRV') || ($ipAddress->getTypeMat() == 'BOX') || ($ipAddress->getTypeMat() == 'Imprimante') || ($ipAddress->getTypeMat() == 'Surveillance'))){
 						?> <td class="fontTableau fontTableauKo"> <?php
-					} else { 
+					} 
+					else if ($ipAddress->getStatus() == 'Ko') 
+					{
+						?> <td class="fontTableau fontTableauKoNormal "> <?php
+					} 
+					else { 
 						?> <td class="fontTableau fontTableauOK"> <?php 
 					} 
 						?>
@@ -55,6 +61,11 @@
 										case 'Imprimante' :
 											?>
 											<b style="color:#6DA329">
+											<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")";
+											break;
+										case 'Scanner' :
+											?>
+											<b style="color:blue">
 											<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")";
 											break;
 										case 'SRV' :
@@ -105,6 +116,7 @@
 										} else {
 									?>	
 									<div>
+
 										<img src="../../assets/img/Stop.png" style="width:50%">
 										<span class="infobulle">
 											

@@ -19,7 +19,12 @@
     background-color: #F3F3F3;
 }
 .fontTableauKo {
-    background-color: rgb(255, 220, 220);   
+    /* background-color: rgb(255, 220, 220);    */
+    background-color: rgba(255, 0, 0, 0.2);   
+}
+
+.fontTableauKoNormal {
+    background-color: rgba(255, 162, 0, 0.3);
 }
 
 /* Couleurs */

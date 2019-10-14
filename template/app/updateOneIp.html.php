@@ -6,11 +6,16 @@
 	<table class="borderSpacer ">
 		<tr>
 			<?php foreach($ipAddresses as $key=>$ipAddress): ?>
-			<?php if ($ipAddress->getStatus() == 'Ko')
+			<?php 
+				if ($ipAddress->getStatus() == 'Ko' && (($ipAddress->getTypeMat() == 'SRV') || ($ipAddress->getTypeMat() == 'BOX') || ($ipAddress->getTypeMat() == 'Imprimante') || ($ipAddress->getTypeMat() == 'Surveillance'))){
+					?> <td class="fontTableau fontTableauKo"> <?php
+				} 
+				else if ($ipAddress->getStatus() == 'Ko')
 				{
 					?> 
-					<td class="fontTableau fontTableauKo"> <?php
-				} else {
+					<td class="fontTableau fontTableauKoNormal"> <?php
+				} 
+				else {
 					?> 
 					<td class="fontTableau fontTableauOK"> <?php
 				}
@@ -164,10 +169,8 @@
 								<tr style="height:20px"></tr>
 								<tr>									
 									<td></td>
-									<td><input type="submit" value="insérer"></td>
-									<!-- <td>
-										<a href="/public/index.php/edit/<?= $ipAddress->getIp()?>/ok"> <img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit"> </a>
-									</td> -->
+									<!-- <td><input type="submit" value="insérer"></td> -->
+									<td><button type="submit"><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit"></td>
 								</tr>
 							</form>
 						</table>						
@@ -175,7 +178,8 @@
 			<?php endforeach; ?>
 			</tr>
 			</td>
-		</tr>
+		</tr>		
 	</table>
+	<br><br>
 </div>
 <?php include __DIR__ . "/../baseClose.html.php"; ?>

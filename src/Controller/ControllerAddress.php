@@ -311,7 +311,7 @@ class ControllerAddress extends Controller
     public function freeIpAddress() {
 
             $pdo = $this->getPdo();
-            $sql = "SELECT ip, name FROM IpAddress ORDER BY ip_Num ";
+            $sql = "SELECT ip, status, type_mat, name FROM IpAddress ORDER BY ip_Num ";
             // $sql = "SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress";
             $sth = $pdo->prepare($sql);
             $sth->execute();

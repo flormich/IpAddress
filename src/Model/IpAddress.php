@@ -8,6 +8,7 @@ class IpAddress
     private $id;
     private $status;
     private $dateDernOn;
+    private $date_dern_on;
     private $dateKo;
     private $ip_Num;
     private $name;
@@ -44,6 +45,7 @@ class IpAddress
     public function getDateDernOn()
     {
         return $this->date_dern_on;
+        // return $this->dateDernOn;
     }
 
     /**
