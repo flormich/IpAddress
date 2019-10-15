@@ -18,7 +18,12 @@ class ControllerAddress extends Controller
         $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress ORDER BY ip_Num';
         $sth = $pdo->prepare($sql);
         $sth->execute();
-        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
+
+        foreach($ipAddresses as $ipAddress) {
+            $date = $ipAddress->getDateDernOn();
+        }
+        $_SESSION['date'] = "$date";
 
         return $this->render("app/index.html.php", [
             "ipAddresses" => $ipAddresses,
@@ -214,7 +219,6 @@ class ControllerAddress extends Controller
     }
 
 
-
     //Create IpAddress
     public function createIpAddress()
     {
@@ -259,7 +263,6 @@ class ControllerAddress extends Controller
                 exec("timeout 0.025 ping -c1 192.168.$RESEAU.$IP", $output, $Status); 
                 {
                     $date = date("Y-m-d H:i");
-
                     if ($Status == 0){    
                         $ipNum = ip2long("192.168.$RESEAU.$IP");                       
                         $sql = "INSERT INTO IpAddress VALUE ('', '192.168.$RESEAU.$IP', 'OK', '$date', '', '$ipNum', '', '') ON DUPLICATE KEY UPDATE status = 'OK', date_dern_on = '$date', date_ko = ''";
@@ -281,6 +284,20 @@ class ControllerAddress extends Controller
                     }
                 }
             }
+        }
+       
+        //pour mettre dans une session la date et l'heure de la mise à jour que je récupérer dans baseOpen.html.php
+        {
+            $pdo = $this->getPdo();
+            $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress ORDER BY ip_Num';
+            $sth = $pdo->prepare($sql);
+            $sth->execute();
+            $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
+    
+            foreach($ipAddresses as $ipAddress) {
+                $date = $ipAddress->getDateDernOn();
+            }
+            $_SESSION['date'] = "$date";
         }
         header('Location: ../../public/index.php/freeIp');
     }
@@ -310,14 +327,11 @@ class ControllerAddress extends Controller
 
     public function freeIpAddress() {
 
-            $pdo = $this->getPdo();
-            $sql = "SELECT ip, status, type_mat, name FROM IpAddress ORDER BY ip_Num ";
-            // $sql = "SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress";
-            $sth = $pdo->prepare($sql);
-            $sth->execute();
-            $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class); 
-
-
+        $pdo = $this->getPdo();
+        $sql = "SELECT ip, status, type_mat, name FROM IpAddress ORDER BY ip_Num ";
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class); 
 
         return $this->render("app/freeIp.html.php", [
             "ipAddresses" => $ipAddresses,
