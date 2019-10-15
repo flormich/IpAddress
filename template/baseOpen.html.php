@@ -128,9 +128,10 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                         mdl-textfield--floating-label mdl-textfield--align-right">  
 
+          <!-- search -->
               <label class="mdl-button mdl-js-button mdl-button--icon"
                     for="fixed-header-drawer-exp">
-                    <img src="/assets/img/Search.png" alt="Sort by " title="Trier par" style="width:2.3rem"  >
+                    <img src="/assets/img/Search.png" alt="Search" title="Chercher" style="width:2.3rem"  >
                 <!-- <i class="material-icons">search</i> -->
               </label>
 

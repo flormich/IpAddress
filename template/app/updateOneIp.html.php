@@ -126,7 +126,6 @@
 							<tr class="heightDelete">
 								<td>
 									<a href="/public/index.php/delete/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="/assets/img/Full Trash.png" alt="delete" title="Delete de <?= $ipAddress->getIp()?>" ></a>
-									<a href="/public/index.php/edit/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="/assets/img/edit_2.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>" ></a>
 								</td>
 							</tr>
 						</table>
@@ -170,7 +169,8 @@
 								<tr>									
 									<td></td>
 									<!-- <td><input type="submit" value="insérer"></td> -->
-									<td><button type="submit"><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit"></td>
+									<td><button type="submit"><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit
+									 de <?= $ipAddress->getIp()?>"></td>
 								</tr>
 							</form>
 						</table>						

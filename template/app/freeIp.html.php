@@ -4,18 +4,21 @@
      $ipBdd = array ();
      foreach ($ipAddresses as $ipAddress) {
      $ipBdd[] = [
-          'ip' => $ipAddress->getIp() . "<br>",
+          'ip' => $ipAddress->getIp(),
           'status' => $ipAddress->getStatus(),
           'type' => $ipAddress->getTypeMat(),
           'name' => $ipAddress->getName(),
      ];
      }
 
+     $date = $ipAddress->getDateDernOn();
+     echo $date;
+
      $ipFreeArray = array ();
      $ip = 0 ;
      for ($ip = 0; $ip<255; $ip++) {
           $ipFreeArray[] = [
-               'ip' => $ipFree = "192.168.0.$ip" . "<br>",
+               'ip' => $ipFree = "192.168.0.$ip",
           ];
      }
 ?>
@@ -27,10 +30,10 @@
      <?php
      $i =0;
      $m = 0;
-     $NbrColonne = 9;
+     $NbrColonne = 11;
      ?> 
      <!-- <table style="margin:auto">  -->
-     <table class="borderTileIpFree borderSpacer" style="margin:auto"> <?php
+     <table class="borderSpacer" style="margin:auto"> <?php
           for ($o = 0; $o<255; $o++)
           {
                if ($ipBdd[$i]["ip"] == $ipFreeArray[$o]["ip"])
@@ -43,36 +46,38 @@
                     }
                     ?>
                          <?php if ($ipBdd[$i]['status'] == "OK") {?>
-                              <td class="border bckgroundOk ">
+                              <td class="border bckgroundOk" onclick="document.location='/public/index.php/edit/<?= $ipBdd[$i]['ip']?>'" >
                                    <b style="color:red">
-                                   <?php
-                                        echo ($ipBdd[$i]['ip']);
-                                   ?></b>
-                                   <b class="colorBlue">
-                                   <?php
-                                        echo ($ipBdd[$i]['name']) . "<br>";
-                                   ?>
+                                        <?php
+                                             echo ($ipBdd[$i]['ip']) . "<br>";
+                                        ?>
                                    </b>
-                                   <?php
+                                   <b class="colorBlue">
+                                        <?php
+                                             echo ($ipBdd[$i]['name']) . "<br>";
+                                        ?>
+                                   </b>
+                              <?php
                          }
                          else if ($ipBdd[$i]['status'] == "Ko" && (($ipBdd[$i]['type'] == 'SRV') || ($ipBdd[$i]['type'] == 'BOX') || ($ipBdd[$i]['type'] == 'Imprimante') || ($ipBdd[$i]['type'] == 'Surveillance'))) {?>
-                              <td class="border bckgroundKo">
-                              <b style="color:GreenYellow">
-                              <?php
-                                        echo ($ipBdd[$i]['ip']);
-                                   ?></b>
+                              <td class="border bckgroundKo" onclick="document.location='/public/index.php/edit/<?= $ipBdd[$i]['ip'] ?>'">
+                                   <b style="color:GreenYellow">
+                                        <?php
+                                             echo ($ipBdd[$i]['ip']) . "<br";
+                                        ?>
+                                   </b>
                                    <b style="color:Gold ">
-                                   <?php
-                                        echo ($ipBdd[$i]['name']) . "<br>";
-                                   ?>
+                                        <?php
+                                             echo ($ipBdd[$i]['name']) . "<br>";
+                                        ?>
                                    </b>
                               <?php
                          }
                          else { ?>
-                              <td class="border bckgroundKoNormal ">
+                              <td class="border bckgroundKoNormal " onclick="document.location='/public/index.php/edit/<?= $ipBdd[$i]['ip'] ?>'">
                               <b style="color:red">
                               <?php
-                                        echo ($ipBdd[$i]['ip']);
+                                        echo ($ipBdd[$i]['ip']) . "<br>";
                                    ?></b>
                                    <b class="colorBlue">
                                    <?php
@@ -82,11 +87,10 @@
                               <?php
                          }
                          ?>
-                         <b>
-                         <?php
-                                   echo ($ipBdd[$i]['type']);
-
-                              ?>
+                              <b>
+                                   <?php
+                                        echo ($ipBdd[$i]['type']);
+                                   ?>
                               </b>
                          </td>
                          <?php

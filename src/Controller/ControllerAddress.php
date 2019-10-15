@@ -94,7 +94,7 @@ class ControllerAddress extends Controller
     public function displayIpAddressOther()
     {
         $pdo = $this->getPdo();
-        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE type_mat = "" OR type_mat IS NULL OR (type_mat != "PC" AND type_mat != "MAC" AND type_mat != "SRV" AND type_mat != "Imprimante" AND type_mat != "Scanner" AND type_mat != "Etiquette") ORDER BY ip_Num';
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE type_mat = "" OR type_mat IS NULL OR (type_mat != "PC" AND type_mat != "MAC" AND type_mat != "SRV" AND type_mat != "Imprimante" AND type_mat != "Scanner" AND type_mat != "Etiquette" AND type_mat != "Surveillance") ORDER BY ip_Num';
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $ipAddresses = $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
@@ -282,7 +282,7 @@ class ControllerAddress extends Controller
                 }
             }
         }
-        header('Location: ../../public');
+        header('Location: ../../public/index.php/freeIp');
     }
 
     public function updateOneIpAddress()
