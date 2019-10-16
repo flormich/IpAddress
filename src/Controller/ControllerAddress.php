@@ -224,7 +224,7 @@ class ControllerAddress extends Controller
     {
         for ($RESEAU = 0; $RESEAU <= 1; $RESEAU++)
         {
-            $IP = 0;
+            $IP = 1;
             while ($IP <= 255)
             {
                 $host = 'host 192.168.$RESEAU.$IP';
@@ -258,7 +258,7 @@ class ControllerAddress extends Controller
     {
         for ($RESEAU = 0; $RESEAU <= 0; $RESEAU++)
         {
-            for ($IP = 0; $IP <=255; $IP++)
+            for ($IP = 1; $IP <=255; $IP++)
             {
                 exec("timeout 0.025 ping -c1 192.168.$RESEAU.$IP", $output, $Status); 
                 {

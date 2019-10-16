@@ -2,7 +2,7 @@
 <html>
     <head>
         <!-- RAFRAICHIR / ACTUALISATION / REFRESH / RAFRAICHIR / rafraichir / actualiser / refresh / actualisation-->
-        <META HTTP-EQUIV="Refresh" CONTENT="600; URL=/public/; URL=/public/index.php/ipUpdate">
+        <META HTTP-EQUIV="Refresh" CONTENT="300; URL=/public/index.php/ipUpdate">
     </head>
 </html>
 

@@ -28,13 +28,13 @@
 <!-- Display data -->
 <div class="borderSpacer" style="text-align:center">
      <?php
-     $i =0;
-     $m = 0;
+     $i = 0;
+     $m = 1;
      $NbrColonne = 11;
      ?> 
      <!-- <table style="margin:auto">  -->
      <table class="borderSpacer" style="margin:auto"> <?php
-          for ($o = 0; $o<255; $o++)
+          for ($o = 1; $o<255; $o++)
           {
                if ($ipBdd[$i]["ip"] == $ipFreeArray[$o]["ip"])
                {                         
@@ -46,7 +46,7 @@
                     }
                     ?>
                          <?php if ($ipBdd[$i]['status'] == "OK") {?>
-                              <td class="border bckgroundOk" onclick="document.location='/public/index.php/edit/<?= $ipBdd[$i]['ip']?>'" >
+                              <td class="borderBusyIp bckgroundOk" onclick="document.location='/public/index.php/edit/<?= $ipBdd[$i]['ip']?>'" >
                                    <b style="color:red">
                                         <?php
                                              echo ($ipBdd[$i]['ip']) . "<br>";
@@ -60,7 +60,7 @@
                               <?php
                          }
                          else if ($ipBdd[$i]['status'] == "Ko" && (($ipBdd[$i]['type'] == 'SRV') || ($ipBdd[$i]['type'] == 'BOX') || ($ipBdd[$i]['type'] == 'Imprimante') || ($ipBdd[$i]['type'] == 'Surveillance'))) {?>
-                              <td class="border bckgroundKo" onclick="document.location='/public/index.php/edit/<?= $ipBdd[$i]['ip'] ?>'">
+                              <td class="borderBusyIp bckgroundKo" onclick="document.location='/public/index.php/edit/<?= $ipBdd[$i]['ip'] ?>'">
                                    <b style="color:GreenYellow">
                                         <?php
                                              echo ($ipBdd[$i]['ip']) . "<br";
@@ -74,7 +74,7 @@
                               <?php
                          }
                          else { ?>
-                              <td class="border bckgroundKoNormal " onclick="document.location='/public/index.php/edit/<?= $ipBdd[$i]['ip'] ?>'">
+                              <td class="borderBusyIp bckgroundKoNormal " onclick="document.location='/public/index.php/edit/<?= $ipBdd[$i]['ip'] ?>'">
                               <b style="color:red">
                               <?php
                                         echo ($ipBdd[$i]['ip']) . "<br>";
@@ -102,12 +102,11 @@
                     } else {
                     }
                     ?>
-                         <td class="border FreeTile">
+                         <td class="borderFreeIp FreeTile">
                               <b class="colorTextAddIp">
-                              <br>
-                                   <?php
-                                        echo "192.168.0.$o" . "<br>";
-                                   ?>                    
+                              <?php
+                                   echo "192.168.0.$o" . "<br>";
+                              ?>                    
                               
                          </td>
                     <?php
