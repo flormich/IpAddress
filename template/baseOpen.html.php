@@ -48,7 +48,7 @@
           <!-- Drop down 1 --> 
           <ul class="niveau1 ">
             <li>
-              <img class="icoNiveau1" src="/assets/img/Find.png" alt="Find material" title="Afficher">
+            <a href="/public/"><img class="icoNiveau1" src="/assets/img/Find.png" alt="Find material" title="Afficher"></a>
               <ul class="niveau2 DropDownMenu">
                 <li>
                   <a href="/public/"><img class="icoNiveau2" src="/assets/img/Home.png" alt="Ping All" title="Tout afficher"></a> : Tous
@@ -89,8 +89,8 @@
           <!-- Drop down 2 --> 
           <ul class="niveau1 ">
             <li>
-              <img class="icoNiveau1" src="/assets/img/folders-searches.png" alt="Sort by " title="Trier par " >
-              <ul class="niveau2Dropdown2 DropDownMenu">
+            <a href="/public/index.php/freeIp"><img class="icoNiveau1" src="/assets/img/folders-searches.png" alt="Sort by " title="Trier par " ></a>
+              <ul class="niveau2 DropDownMenu">
                 <li>
                   <a href="/public/"><img class="icoNiveau2" src="/assets/img/dedicated-ip.png" alt="sort by ip" title="Trie par IP" ></a> : Ip
                 </li>                                 
@@ -104,13 +104,37 @@
                   <a href="/public/index.php/byTypeMat"><img class="icoNiveau2" src="/assets/img/Headphones.png" alt="sort by material type" title="Trie par type de matériel" ></a> : Type de matériel
                 </li>                                 
                 <li>                                 
-                  <a href="/public/index.php/lastAdd"><img class="icoNiveau2" src="/assets/img/last_add.png" alt="last add" title="Trie par dernier ajout" style="width:2.5rem"></a> : Derniers ajouts
-                </li>                                 
-              </ul>
+                  <a href="/public/index.php/lastAdd"><img class="icoNiveau2" src="/assets/img/last_add.png" alt="last add" title="Trie par dernier ajout" ></a> : Derniers ajouts
+                </li> 
+
+                <li>
+                  <hr>
+                </li>
+
+                <li>
+                  <a href="/public/index.php/freeIp"><img class="icoNiveau2" src="/assets/img/freeCat.png" alt="All IpAddress" title="Tous les ip"></a> : Tous les Ip                               
+                </li>
+                <li>
+                    <a href="/public/index.php/freeIpByCat"><img class="icoNiveau2" src="/assets/img/free.png" alt="State Ip" title="Ip par état de connexion"></a> : Par cat conn 
+                  </li>                                 
+                </ul>
             </li>
           </ul>
             
-          <a href="/public/index.php/freeIp"><img class="ico" src="/assets/img/free.png" alt="Free Ip" title="Ip Libre"></a>
+          <!-- Drop down 3 
+          <ul class="niveau1 ">
+            <li>
+              <img class="icoNiveau1" src="/assets/img/free.png" alt="Sort by " title="Ip Trier par " >
+              <ul class="niveau2 DropDownMenu">
+                <li>
+                  <a href="/public/index.php/freeIp"><img class="icoNiveau2" src="/assets/img/free.png" alt="Free Ip" title="Ip Libre"></a> : Tous les Ip
+                </li>                                 
+                <li>
+                  <a href="/public/index.php/freeIpByCat"><img class="icoNiveau2" src="/assets/img/freeCat.png" alt="Free Ip" title="Ip Libre"></a> : Par cat conn
+                </li>                                 
+              </ul>
+            </li>
+          </ul> -->
 
           <!-- Space between left icon and dernier ping text -->
             <div class="mdl-layout-spacer"></div>

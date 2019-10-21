@@ -48,7 +48,7 @@ li.plus {
 
 .niveau2 {
      padding: 10px 2px 10px 2px;
-     width: 10rem;
+     width: 12rem;
 }
 
 .niveau2Dropdown2 {
@@ -65,6 +65,10 @@ li.plus {
 .icoNiveau1 {
      width: 4rem;
 }
+/* .icoNiveau1b {
+     width: 4rem;
+     padding-left: 10px;
+} */
 
 .icoNiveau2 {
      width: 3rem;
