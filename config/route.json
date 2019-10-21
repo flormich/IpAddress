@@ -139,9 +139,31 @@
         "action" : "displayLastAddIpAddress"
     },
 
+    "resultSearch": {
+        "method" : "post",
+        "path" : "/public/index.php/resultSearch",
+        "controller" : "ControllerAddress",
+        "action" : "displaySearchIpAddress"
+    },
+
+    "resultSearchIp": {
+        "method" : "get",
+        "path" : "/public/index.php/resultSearch/(192.168.[0-1]{1}.[\\d]{1,3})",
+        "controller" : "ControllerAddress",
+        "action" : "displaySearchIpAddressIp"
+    },
 
 
 
+
+
+
+    "freeIpByCat" : {
+        "method" : "get",
+        "path" : "/public/index.php/freeIpByCat",
+        "controller" : "ControllerAddress",
+        "action" : "freeIpAddressByCat"
+    },
 
     "freeIp" : {
         "method" : "get",

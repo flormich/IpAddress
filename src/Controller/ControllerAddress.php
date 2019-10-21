@@ -218,6 +218,35 @@ class ControllerAddress extends Controller
         ]);
     }
 
+    public function displaySearchIpAddress()
+    {
+        $ip = $_POST['name'];
+        $pdo = $this->getPdo();
+        $sql = "SELECT id, ip_Num, ip, status, date_dern_on, date_ko, name, type_mat  FROM IpAddress WHERE ip='$ip'";
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+
+        return $this->render("app/resultSearch.html.php", [
+            "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);        
+    }
+
+    public function displaySearchIpAddressIp($ip)
+    {
+        $pdo = $this->getPdo();
+        $sql = "SELECT id, ip_Num, ip, status, date_dern_on, date_ko, name, type_mat  FROM IpAddress WHERE ip='$ip'";
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+
+        return $this->render("app/resultSearch.html.php", [
+            "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);        
+    }
+
 
     //Create IpAddress
     public function createIpAddress()
@@ -334,6 +363,20 @@ class ControllerAddress extends Controller
         $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class); 
 
         return $this->render("app/freeIp.html.php", [
+            "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);
+    }
+
+    public function freeIpAddressByCat() {
+
+        $pdo = $this->getPdo();
+        $sql = "SELECT ip, status, type_mat, name FROM IpAddress ORDER BY ip_Num ";
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class); 
+
+        return $this->render("app/freeIpByCat.html.php", [
             "ipAddresses" => $ipAddresses,
             // "token" => $this->isCsrfTokenValid(),
         ]);

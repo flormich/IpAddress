@@ -128,13 +128,17 @@
           <!-- Delete Toute la BDD -->
             <a  href="/public/index.php/deleteAll##"><img class="ico" src="/../assets/img/Trash.png" alt="Delete la BDD" title="Delete la BDD" ></a>
 
+            <!-- <a href="/public/index.php/search"><img class="ico" src="/assets/img/Search.png" alt="search" title="Rechercher" style="width:2.3rem"></a> -->
+            <a href="../../../template/app/search.html.php"><img class="ico" src="/assets/img/Search.png" alt="search" title="Rechercher" style="width:2.3rem"></a>
+
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                         mdl-textfield--floating-label mdl-textfield--align-right">  
 
-          <!-- search -->
-              <label class="mdl-button mdl-js-button mdl-button--icon"
-                    for="fixed-header-drawer-exp">
-                    <img src="/assets/img/Search.png" alt="Search" title="Chercher" style="width:2.3rem"  >
+          <!-- search / chercher / rechercher -->
+              <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+                    <!-- <img src="/assets/img/Search.png" alt="Search" title="Chercher" style="width:2.3rem"> -->
+
+
                 <!-- <i class="material-icons">search</i> -->
               </label>
 

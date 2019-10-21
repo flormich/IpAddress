@@ -1,9 +1,10 @@
 <?php
-	include __DIR__ . "/../baseOpen.html.php";
+	include __DIR__ . "./../baseOpen.html.php";
 	?><br>
 
 <div class="demo-list-action ">
 	<table class="borderSpacer ">
+	<br>
 		<tr>
 			<?php foreach($ipAddresses as $key=>$ipAddress): ?>
 			<?php 
@@ -129,9 +130,10 @@
 								</td>
 							</tr>
 						</table>
+						
 					</td>		
 					<td>
-						<table>
+						<table class="TextDescriptiveOneIp">
 							<form method="post" action="inserer">
 								<tr>
 									<td>Id : </td>
@@ -150,27 +152,26 @@
 									<td><input type="text" name="status" value="<?php echo $ipAddress->getStatus() ?>"></td>
 								</tr>
 								<tr>
-									<td>date_dern_on : </td>
+									<td>Date dernier Ok : </td>
 									<td><input type="text" name="dateDernOn" value="<?php echo $ipAddress->getDateDernOn() ?>"></td>
 								</tr>
 								<tr>
-									<td>date_ko : </td>
+									<td>Date du Ko : </td>
 									<td><input type="text" name="dateKo" value="<?php if ($ipAddress->getStatus() == "OK") {echo "";} else {echo $ipAddress->getDateKo();}; ?>"></td>
 								</tr>
 								<tr>
-									<td>name : </td>
+									<td>Nom : </td>
 									<td><input type="text" name="name" value="<?php echo $ipAddress->getName() ?>"></td>
 								</tr>
 								<tr>
-									<td>type_mat : </td>
+									<td>Type : </td>
 									<td><input type="text" name="typeMat" value="<?php echo $ipAddress->getTypeMat() ?>"></td>
 								</tr>
 								<tr style="height:20px"></tr>
 								<tr>									
 									<td></td>
 									<!-- <td><input type="submit" value="insérer"></td> -->
-									<td><button type="submit"><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit
-									 de <?= $ipAddress->getIp()?>"></td>
+									<td><button type="submit"><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>"></td>
 								</tr>
 							</form>
 						</table>						

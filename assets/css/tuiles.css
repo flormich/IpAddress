@@ -94,6 +94,7 @@
 .iconValidate {    
     margin-left:115px;
     padding: 5px;
+
 }
 
 .heightTitle {
@@ -125,5 +126,11 @@ hr {
     height: 2px;
     background-color: rgb(4, 0, 255);
     border: none; /* on supprime le style par défaut */
+}
+
+.TextDescriptiveOneIp {
+    font-weight: bold;
+    color: rgb(151, 0, 0);
+    text-align: end;
 }
 
