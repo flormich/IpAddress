@@ -34,7 +34,7 @@ class ControllerAddress extends Controller
     public function displayIpAddressComputer()
     {
         $pdo = $this->getPdo();
-        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE type_mat = "PC" OR type_mat = "MAC" ORDER BY ip_Num';
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE type_mat = "PC" OR type_mat = "MAC" OR type_mat = "Ordinateur" ORDER BY ip_Num';
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $ipAddresses = $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);

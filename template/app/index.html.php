@@ -21,18 +21,16 @@
 			<tr>
 				<?php foreach($ipAddresses as $key=>$ipAddress): ?>
 				<?php
-				if ($key >= ($nbrDIpParLigne * $i) && $key < ($nbrDIpParLigne * ($i+1))) { ?>
-
-					<?php 
+				if ($key >= ($nbrDIpParLigne * $i) && $key < ($nbrDIpParLigne * ($i+1))) { 
 					if ($ipAddress->getStatus() == 'Ko' && (($ipAddress->getTypeMat() == 'SRV') || ($ipAddress->getTypeMat() == 'BOX') || ($ipAddress->getTypeMat() == 'Imprimante') || ($ipAddress->getTypeMat() == 'Surveillance'))){
-						?> <td class="fontTableau fontTableauKo"> <?php
+						?> <td class="fontTableau fontTableauKo" onclick="document.location='/public/index.php/resultSearch/<?= $ipAddress->getIp() ?>'"> <?php
 					} 
 					else if ($ipAddress->getStatus() == 'Ko') 
 					{
-						?> <td class="fontTableau fontTableauKoNormal "> <?php
+						?> <td class="fontTableau fontTableauKoNormal" onclick="document.location='/public/index.php/resultSearch/<?= $ipAddress->getIp() ?>'"> <?php
 					} 
 					else { 
-						?> <td class="fontTableau fontTableauOK"> <?php 
+						?> <td class="fontTableau fontTableauOK" onclick="document.location='/public/index.php/resultSearch/<?= $ipAddress->getIp() ?>'"> <?php 
 					} 
 						?>
 						<table class="heightTable">

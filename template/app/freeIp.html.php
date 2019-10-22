@@ -34,9 +34,9 @@
      
      ?> 
      <table class="borderIpKoNoNormal"> 
-          <u><H5>
-             Ip Ko est à surveiller
-          </H5></u>
+          <u><h4>
+             Adresses <b style="color:red">Ip Ko</b> est à surveiller
+          </h4></u>
           <?php 
      
           for ($o = 1; $o<255; $o++)
@@ -81,18 +81,19 @@
      </table>
 </div>
 
-<br><hr><br>
+<br><hr>
 
 <div class="borderSpacer" style="text-align:center">
      <?php
      $i = 0;
      $m = 1;
      $NbrColonne = 11;
+
      ?> 
      <table class="borderSpacer" style="margin:auto"> 
-          <b><u><h5>
-               Totalité des adresses ip
-          </h5></u></b>
+          <b><u><h4>
+               Totalité des adresses <b style="color:blue">Ip</b>
+          </h4></u></b>
           <?php
                for ($o = 1; $o<255; $o++)
                {
@@ -135,24 +136,25 @@
                               }
                               else { ?>
                                    <td class="borderBusyIp bckgroundKoNormal " onclick="document.location='/public/index.php/resultSearch/<?= $ipBdd[$i]['ip'] ?>'">
-                                   <b style="color:red">
-                                   <?php
-                                             echo ($ipBdd[$i]['ip']) . "<br>";
-                                        ?></b>
+                                        <b style="color:red">
+                                             <?php
+                                                  echo ($ipBdd[$i]['ip']) . "<br>";
+                                             ?>
+                                        </b>
                                         <b class="colorBlue">
-                                        <?php
-                                             echo ($ipBdd[$i]['name']) . "<br>";
-                                        ?>
+                                             <?php
+                                                  echo ($ipBdd[$i]['name']) . "<br>";
+                                             ?>
                                         </b>
                                    <?php
                               }
-                              ?>
-                                   <b>
-                                        <?php
-                                             echo ($ipBdd[$i]['type']);
-                                        ?>
-                                   </b>
-                              </td>
+                                   ?>
+                                        <b>
+                                             <?php
+                                                  echo ($ipBdd[$i]['type']);
+                                             ?>
+                                        </b>
+                                   </td>
                               <?php
                               $i++;
                     } else {     
@@ -164,17 +166,16 @@
                          ?>
                               <td class="borderFreeIp FreeTile">
                                    <b class="colorTextAddIp">
-                                   <?php
-                                        echo "192.168.0.$o" . "<br>";
-                                   ?>                    
-                                   
+                                        <?php
+                                             echo "192.168.0.$o" . "<br>";
+                                        ?>  
+                                   </b>                                 
                               </td>
                          <?php
                     }                           
                }
           ?> 
      </table>
-
 </div>
 
 <?php include __DIR__ . "/../baseClose.html.php"; ?>
