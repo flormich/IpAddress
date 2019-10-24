@@ -21,18 +21,6 @@
   </head>  
 
   <body>
-
-  <?php
-    // foreach($ipAddresses as $ipAddress):
-    //   if ($ipAddress->getIp() == '192.168.0.254' && $ipAddress->getStatus() == 'OK'){
-    //     $IpAddressLastDate = $ipAddress->getDateDernOn();
-    //   } else {
-    //     $IpAddressLastDate = '';
-    //   }
-    // endforeach;
-?>
-    </div>
-
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header backgroundPage" >
       <div class="mdl-card mdl-cell mdl-cell--12-col backgroundPage">
         <header class="mdl-layout__header">
@@ -48,28 +36,28 @@
           <!-- Drop down 1 --> 
           <ul class="niveau1 ">
             <li>
-            <a href="/public/"><img class="icoNiveau1" src="/assets/img/Find.png" alt="Find material" title="Afficher"></a>
+              <a href="/public/"><img class="icoNiveau1" src="/assets/img/Find.png" alt="Find material" title="Afficher"></a>
               <ul class="niveau2 DropDownMenu">
                 <li>
                   <a href="/public/"><img class="icoNiveau2" src="/assets/img/Home.png" alt="Ping All" title="Tout afficher"></a> : Tous
                 </li>
                 <li>
-                  <a href="/public/index.php/pingComputer"><img class="icoNiveau2" src="/assets/img/computer.png" alt="Ping Computer" title="Les ordinateurs"></a> : Ordi
+                  <a href="/public/index.php/pingComputer"><img class="icoNiveau2" src="/assets/img/computer.png" alt="Ping Computer" title="Afficher les ordinateurs"></a> : Ordis
                 </li>
                 <li>
-                  <a href="/public/index.php/pingSrv"><img class="icoNiveau2" src="/assets/img/server-rack.png" alt="Ping Serveur" title="Affichage les serveurs"></a> : Srv
+                  <a href="/public/index.php/pingSrv"><img class="icoNiveau2" src="/assets/img/server-rack.png" alt="Ping Serveur" title="Afficher les serveurs"></a> : Srv
                 </li>          
                 <li>
-                  <a href="/public/index.php/printer"><img class="icoNiveau2" src="/assets/img/Printer.png" alt="Ping Printer" title="Affichage les imprimantes"></a> : Imprimante
+                  <a href="/public/index.php/printer"><img class="icoNiveau2" src="/assets/img/Printer.png" alt="Ping Printer" title="Afficher les imprimantes"></a> : Imprimantes
                 </li>
                 <li>
-                  <a href="/public/index.php/label"><img class="icoNiveau2" src="/assets/img/ticket.png" alt="Ping Zebra" title="Affichage les zebras"></a> : Zebra
+                  <a href="/public/index.php/label"><img class="icoNiveau2" src="/assets/img/ticket.png" alt="Ping Zebra" title="Afficher les zebras"></a> : Zebras
                 </li>
                 <li>
-                  <a href="/public/index.php/oversight"><img class="icoNiveau2" src="/assets/img/webcam.png" alt="Ping Oversight" title="Affichage la surveillance"></a> : Surveillance
+                  <a href="/public/index.php/oversight"><img class="icoNiveau2" src="/assets/img/webcam.png" alt="Ping Oversight" title="Afficher la surveillance"></a> : Surveillances
                 </li>
                 <li>
-                  <a href="/public/index.php/other"><img class="icoNiveau2" src="/assets/img/other.png" alt="Ping other" title="Affichage le reste"></a> : Other
+                  <a href="/public/index.php/other"><img class="icoNiveau2" src="/assets/img/other.png" alt="Ping other" title="Afficher le reste"></a> : Autres
                 </li>
 
                 <li>
@@ -77,10 +65,10 @@
                 </li>
 
                 <li>
-                  <a href="/public/index.php/ok"><img class="icoNiveau2" src="/assets/img/Renew.png" alt="Ping Ok" title="Affichage les OK"></a> : Ok
+                  <a href="/public/index.php/ok"><img class="icoNiveau2" src="/assets/img/Renew.png" alt="Ping Ok" title="Afficher les OK"></a> : Ok
                 </li>
                 <li>
-                  <a href="/public/index.php/ko"><img class="icoNiveau2" src="/assets/img/Stop.png" alt="Ping Ko" title="Affichage les Ko"></a> : Ko
+                  <a href="/public/index.php/ko"><img class="icoNiveau2" src="/assets/img/Stop.png" alt="Ping Ko" title="Afficher les Ko"></a> : Ko
                 </li>
               </ul>
             </li>
@@ -89,22 +77,22 @@
           <!-- Drop down 2 --> 
           <ul class="niveau1 ">
             <li>
-            <a href="/public/index.php/freeIp"><img class="icoNiveau1" src="/assets/img/folders-searches.png" alt="Sort by " title="Trier par " ></a>
+              <a href="/public/index.php/freeIp"><img class="icoNiveau1" src="/assets/img/folders-searches.png" alt="Sort by " title="Trier par " ></a>
               <ul class="niveau2 DropDownMenu">
                 <li>
-                  <a href="/public/"><img class="icoNiveau2" src="/assets/img/dedicated-ip.png" alt="sort by ip" title="Trie par IP" ></a> : Ip
+                  <a href="/public/"><img class="icoNiveau2" src="/assets/img/dedicated-ip.png" alt="Sort by ip" title="Trier par IP" ></a> : Ip
                 </li>                                 
                 <li>
-                  <a href="/public/index.php/byDateKo"><img class="icoNiveau2" src="/assets/img/date.png" alt="sort by old date ko" title="Trie par date Ko" ></a> : Date Ko
+                  <a href="/public/index.php/byDateKo"><img class="icoNiveau2" src="/assets/img/date.png" alt="Sort by old date ko" title="Trier par date Ko" ></a> : Date Ko
                 </li>                                 
                 <li>
-                  <a href="/public/index.php/byName"><img class="icoNiveau2" src="/assets/img/juk.png" alt="sort by name" title="Trie par nom" ></a> : Nom
+                  <a href="/public/index.php/byName"><img class="icoNiveau2" src="/assets/img/juk.png" alt="Sort by name" title="Trier par nom" ></a> : Nom
                 </li>                                 
                 <li>
-                  <a href="/public/index.php/byTypeMat"><img class="icoNiveau2" src="/assets/img/Headphones.png" alt="sort by material type" title="Trie par type de matériel" ></a> : Type de matériel
+                  <a href="/public/index.php/byTypeMat"><img class="icoNiveau2" src="/assets/img/Headphones.png" alt="Sort by material type" title="Trier par type de matériel" ></a> : Type de matériel
                 </li>                                 
                 <li>                                 
-                  <a href="/public/index.php/lastAdd"><img class="icoNiveau2" src="/assets/img/last_add.png" alt="last add" title="Trie par dernier ajout" ></a> : Derniers ajouts
+                  <a href="/public/index.php/lastAdd"><img class="icoNiveau2" src="/assets/img/last_add.png" alt="Last add" title="Trier par dernier ajout" ></a> : Derniers ajouts
                 </li> 
 
                 <li>
@@ -115,9 +103,9 @@
                   <a href="/public/index.php/freeIp"><img class="icoNiveau2" src="/assets/img/freeCat.png" alt="All IpAddress" title="Tous les ip"></a> : Tous les Ip                               
                 </li>
                 <li>
-                    <a href="/public/index.php/freeIpByCat"><img class="icoNiveau2" src="/assets/img/free.png" alt="State Ip" title="Ip par état de connexion"></a> : Par cat conn 
-                  </li>                                 
-                </ul>
+                  <a href="/public/index.php/freeIpByCat"><img class="icoNiveau2" src="/assets/img/free.png" alt="State Ip" title="Ip par état de connexion"></a> : Par cat conn 
+                </li>                                 
+              </ul>
             </li>
           </ul>
             

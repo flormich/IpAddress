@@ -15,6 +15,23 @@
     text-shadow: 0.2px 0.2px 0.2px black;
 }
 
+.borderTab {
+    border-collapse: collapse;
+    text-align: center;
+    border:1px solid black;
+    /* height:30px; */
+    padding : 10px 5px 10px 5px;
+    /* vertical-align: top; */
+    /* top:5px; */
+    /* box-shadow: 8px 8px 5px rgb(119, 119, 119); */
+    /* border-radius: 0.8em; */
+    text-shadow: 0.2px 0.2px 0.2px black;
+}
+
+th {
+    width: 10rem;
+}
+
 .fontTableauOK {
     background-color: #F3F3F3;
 }
@@ -133,4 +150,5 @@ hr {
     color: rgb(151, 0, 0);
     text-align: end;
 }
+
 
