@@ -8,6 +8,7 @@ use App\Controller\Controller;
 use App\Controller\PingController;
 
 require_once 'Controller.php';
+// require '/config/variable.php';
 
 class ControllerAddress extends Controller
 {
@@ -280,12 +281,10 @@ class ControllerAddress extends Controller
         }
     }
 
-
-
     //Update IpAddress
     public function updateIpAddress()
     {
-        for ($RESEAU = 0; $RESEAU <= 0; $RESEAU++)
+        for ($RESEAU = 0; $RESEAU <= $NbrDeReseauAController; $RESEAU++)
         {
             for ($IP = 1; $IP <=255; $IP++)
             {

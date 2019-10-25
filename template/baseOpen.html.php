@@ -1,3 +1,5 @@
+<?php include "../config/variable.php"; ?>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -127,8 +129,6 @@
           <!-- Space between left icon and dernier ping text -->
             <div class="mdl-layout-spacer"></div>
             <b style="text-align:center"> 
-              <!-- <?php echo "Dernier Ping effectué le :" . "<br>" . date('d/m/Y', strtotime($IpAddressLastDate)). "<br>" . date('H:i', strtotime($IpAddressLastDate)); ?>  -->
-              <!-- <?php echo "Dernier Ping effectué le :" . "<br>" . $_SESSION['date']; ?> -->
               <?php echo "Dernier Ping effectué le :" . "<br>" . date('d/m/Y', strtotime($_SESSION['date'])). "<br>" . date('H:i', strtotime($_SESSION['date'])); ?> 
             </b>
           

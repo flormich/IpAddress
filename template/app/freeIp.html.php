@@ -16,7 +16,7 @@
 
      $ipFreeArray = array ();
      $ip = 0 ;
-     for ($ip = 0; $ip<255; $ip++) {
+     for ($ip = 0; $ip<256; $ip++) {
           $ipFreeArray[] = [
                'ip' => $ipFree = "192.168.0.$ip",
           ];
@@ -30,7 +30,7 @@
      <?php
      $i = 0;
      $m = 1;
-     $NbrColonne = 11;
+     
      
      ?> 
      <table class="borderIpKoNoNormal"> 
@@ -39,7 +39,7 @@
           </h4></u>
           <?php 
      
-          for ($o = 1; $o<255; $o++)
+          for ($o = 1; $o<=$NbrIp; $o++)
           {
                if ($ipBdd[$i]["ip"] == $ipFreeArray[$o]["ip"])
                {                         
@@ -84,7 +84,7 @@
      <?php
      $i = 0;
      $m = 1;
-     $NbrColonne = 11;
+     
 
      ?> 
      <table class="borderSpacer" style="margin:auto"> 
@@ -92,7 +92,7 @@
                Totalité des adresses <b style="color:blue">Ip</b>
           </h4></u></b>
           <?php
-               for ($o = 1; $o<255; $o++)
+               for ($o = 1; $o<=$NbrIp; $o++)
                {
                     if ($ipBdd[$i]["ip"] == $ipFreeArray[$o]["ip"])
                     {                         

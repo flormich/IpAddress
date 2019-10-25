@@ -1,10 +1,11 @@
 <?php
+//Affichage
+$NbrIpParCat = 0; 
+$NbrIp = 254;
+$NbrColonne = 11;    
 
 
-
-//Les tuiles
-$nbrDIpParLigne = 12;
-$nbrDIp = 510;
-$nbrDeLigne = $nbrDIp / $nbrDIpParLigne;
-
+//Controller
+$NbrDeReseauAController = 0;  //reseau à contorller. Si 1 alors controle du reseau 192.168.0/255 et 192.168.1/255
+$NbrIpAController = 255; //ip à controller par réseau
 ?>
