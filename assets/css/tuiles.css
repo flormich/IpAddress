@@ -108,10 +108,16 @@ th {
     bottom:0px;
 }
 
+.icoGauche {
+    width:30%;
+    position:relative;
+    float:left;
+    bottom:0px;
+}
+
 .iconValidate {    
     margin-left:115px;
     padding: 5px;
-
 }
 
 .heightTitle {
