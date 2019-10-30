@@ -131,7 +131,7 @@
 									<?php 
 										if ($ipAddress->getTypeMat() == 'Imprimante' OR ($ipAddress->getTypeMat() == 'SRV') OR ($ipAddress->getTypeMat() == 'Etiquette') OR ($ipAddress->getTypeMat() == 'BOX') OR ($ipAddress->getTypeMat() == 'Routeur') OR ($ipAddress->getTypeMat() == 'Switch')) {
 									?>
-											<a href="\\<?= $ipAddress->getIp()?>"> <img class="icoGauche" src="/assets/img/link.png" alt="edit" title="Lien vers <?= $ipAddress->getIp()?>" ></a>
+											<a href="\\<?= $ipAddress->getIp()?>" target="_blank"> <img class="icoGauche" src="/assets/img/link.png" alt="edit" title="Lien vers <?= $ipAddress->getIp()?>" ></a>
 										<?php } else {} ?>
 								</td>
 							</tr>

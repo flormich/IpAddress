@@ -28,6 +28,8 @@
 
 <br>
 
+<?php include "../config/variable.php"; ?>
+
 <!-- Display data IpKoSurv -->
 <div class="borderSpacer" style="text-align:center">
      <a id="haut"></a>

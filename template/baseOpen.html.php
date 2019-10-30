@@ -1,5 +1,3 @@
-<?php include "../config/variable.php"; ?>
-
 <!DOCTYPE HTML>
 <html>
 

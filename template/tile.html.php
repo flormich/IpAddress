@@ -13,14 +13,14 @@
 				<?php foreach($ipAddresses as $key=>$ipAddress):
 					if ($key >= ($nbrDIpParLigne * $i) && $key < ($nbrDIpParLigne * ($i+1))) { 
 						if ($ipAddress->getStatus() == 'Ko' && (($ipAddress->getTypeMat() == 'SRV') || ($ipAddress->getTypeMat() == 'BOX') || ($ipAddress->getTypeMat() == 'Imprimante') || ($ipAddress->getTypeMat() == 'Surveillance'))){
-							?> <td class="fontTableau fontTableauKo" onclick="document.location='/public/index.php/resultSearch/<?= $ipAddress->getIp() ?>'"> <?php
+							?> <td class="fontTableau fontTableauKo"> <?php
 						} 
 						else if ($ipAddress->getStatus() == 'Ko') 
 						{
-							?> <td class="fontTableau fontTableauKoNormal" onclick="document.location='/public/index.php/resultSearch/<?= $ipAddress->getIp() ?>'"> <?php
+							?> <td class="fontTableau fontTableauKoNormal" > <?php
 						} 
 						else { 
-							?> <td class="fontTableau fontTableauOK" onclick="document.location='/public/index.php/resultSearch/<?= $ipAddress->getIp() ?>'"> <?php 
+							?> <td class="fontTableau fontTableauOK" > <?php 
 						} 
 							?>
 							<table class="heightTable">
@@ -102,12 +102,12 @@
 										if($ipAddress->getStatus() == 'OK')
 										{
 											?>
-											<img src="../../assets/img/Renew.png" style="width:50%">
+											<img src="../../assets/img/Renew.png" onclick="document.location='/public/index.php/resultSearch/<?= $ipAddress->getIp() ?>'" style="width:50%">
 											<?php
 										} else {
 											?>	
 											<div>
-												<img src="../../assets/img/Stop.png" style="width:50%">
+												<img src="../../assets/img/Stop.png" onclick="document.location='/public/index.php/resultSearch/<?= $ipAddress->getIp() ?>'" style="width:50%">
 												<span class="infobulle">												
 													<span class="text-hover">
 														<?php
@@ -147,7 +147,7 @@
 										<?php 
 										if ($ipAddress->getTypeMat() == 'Imprimante' OR ($ipAddress->getTypeMat() == 'SRV') OR ($ipAddress->getTypeMat() == 'Etiquette') OR ($ipAddress->getTypeMat() == 'BOX') OR ($ipAddress->getTypeMat() == 'Routeur') OR ($ipAddress->getTypeMat() == 'Switch')) {
 									?>
-											<a href="\\<?= $ipAddress->getIp()?>"> <img class="icoGauche" src="../../assets/img/link.png" alt="edit" title="Lien vers <?= $ipAddress->getIp()?>" ></a>
+											<a href="\\<?= $ipAddress->getIp()?>" target="_blank"> <img class="icoGauche" src="../../assets/img/link.png" alt="edit" title="Lien vers <?= $ipAddress->getIp()?>" ></a>
 										<?php } else {} ?>
 									</td>
 								</tr>

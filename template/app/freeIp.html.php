@@ -25,6 +25,10 @@
 
 <br>
 
+
+<?php include "../config/variable.php"; ?>
+
+
 <!-- Display data -->
 <div class="borderSpacer" style="text-align:center">
      <?php
