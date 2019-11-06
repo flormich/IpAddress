@@ -39,7 +39,7 @@
      ?> 
      <table class="borderIpKoNoNormal"> 
           <u><h4>
-             Adresses <b style="color:red">Ip Ko</b> à surveiller
+             Adresses <b style="color:red">Ip Ko</b> Ã  surveiller
           </h4></u>
           <?php 
      
@@ -93,7 +93,7 @@
      ?> 
      <table class="borderSpacer" style="margin:auto"> 
           <b><u><h4>
-               Totalité des adresses <b style="color:blue">Ip</b>
+               TotalitÃ© des adresses <b style="color:blue">Ip</b>
           </h4></u></b>
           <?php
                for ($o = 1; $o<=$NbrIp; $o++)

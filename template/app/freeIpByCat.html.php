@@ -33,6 +33,7 @@
 <!-- Display data IpKoSurv -->
 <div class="borderSpacer" style="text-align:center">
      <a id="haut"></a>
+     <a id="red"></a>
 
      <?php
      $i = 0;
@@ -43,10 +44,16 @@
      ?>
 
      <table class="borderIpKoNoNormal"> 
-          <u><h4>
-             Adresses <b style="color:red"> Ip Ko</b> à surveiller
+          <h4>
+               <u> Adresses <b style="color:red"> Ip Ko</b> Ã  surveiller</u>
                <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
-          </h4></u>
+
+               <a href="#ipNotView"><img src="../../assets/img/Circle_Blue.png" alt="Ip Ok/Ko" title="Ip Ok/Ko" style="width:2.5rem;"></a>
+               <a href="#dataIpKoNormal"><img src="../../assets/img/Circle_Orange.png" alt="Ip KoSc" title="Ip KoSc" style="width:2.5rem;"></a>
+               <a href="#dataIpOk"><img src="../../assets/img/Circle_Green.png" alt="Ip Ok" title="Ip Ok" style="width:2.5rem;"></a>
+               <a href="#dataIpNotAssigned"><img src="../../assets/img/Circle_Grey.png" alt="Ip NotAss" title="Ip Not Assigned" style="width:2.5rem;"></a>
+
+          </h4>
           <?php 
      
           for ($o = 0; $o<=$NbrIp; $o++)
@@ -100,6 +107,7 @@
 
 <!-- Display data PingIpNeVoisPas -->
 <div class="borderSpacer" style="text-align:center">
+     <a id="ipNotView"></a>
      <?php
      $i = 0;
      $m = 1;
@@ -109,10 +117,17 @@
      ?>
 
      <table class="borderIpKoNoNormal"> 
-          <u><h4>
-             Adresses <b style="color:#66BBFF"> Ip OK/Ko</b> ne marchant pas avec ping
-             <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
-          </h4></u>
+          <h4>
+               <u>Adresses <b style="color:#66BBFF"> Ip OK/Ko</b> ne marchant pas avec ping</u>
+               <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
+
+               <a href="#red"><img src="../../assets/img/Circle_Red.png" alt="Ip Ko" title="Ip Ko" style="width:2.5rem;"></a>
+               <a href="#dataIpKoNormal"><img src="../../assets/img/Circle_Orange.png" alt="Ip KoSc" title="Ip KoSc" style="width:2.5rem;"></a>
+               <a href="#dataIpOk"><img src="../../assets/img/Circle_Green.png" alt="Ip Ok" title="Ip Ok" style="width:2.5rem;"></a>
+               <a href="#dataIpNotAssigned"><img src="../../assets/img/Circle_Grey.png" alt="Ip NotAss" title="Ip Not Assigned" style="width:2.5rem;"></a>
+
+               <a href="#haut"><img src="../../assets/img/top.png" alt="top" title="Retour en haut" style="width:3rem;"></a>
+          </h4>
           <?php 
      
           for ($o = 0; $o<=$NbrIp; $o++)
@@ -166,6 +181,7 @@
 
 <!-- Display dataIpKoNormal -->
 <div class="borderSpacer" style="text-align:center">
+     <a id="dataIpKoNormal"></a>
      <?php
      $i = 0;
      $m = 1;
@@ -175,10 +191,17 @@
      ?>
 
      <table class="borderIpKoNoNormal"> 
-          <u><h4>
-             Adresses <b style="color:orange">Ip Ko </b> sans conséquence
-             <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
-          </h4></u>
+          <h4>
+               <u>Adresses <b style="color:orange">Ip Ko </b> sans consÃ©quence</u>
+               <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
+
+               <a href="#red"><img src="../../assets/img/Circle_Red.png" alt="Ip Ko" title="Ip Ko" style="width:2.5rem;"></a>
+               <a href="#ipNotView"><img src="../../assets/img/Circle_Blue.png" alt="Ip Ok/Ko" title="Ip Ok/Ko" style="width:2.5rem;"></a>
+               <a href="#dataIpOk"><img src="../../assets/img/Circle_Green.png" alt="Ip Ok" title="Ip Ok" style="width:2.5rem;"></a>
+               <a href="#dataIpNotAssigned"><img src="../../assets/img/Circle_Grey.png" alt="Ip NotAss" title="Ip Not Assigned" style="width:2.5rem;"></a>
+
+               <a href="#haut"><img src="../../assets/img/top.png" alt="top" title="Retour en haut" style="width:3rem;"></a>
+          </h4>
           <?php 
      
           for ($o = 0; $o<=$NbrIp; $o++)
@@ -232,6 +255,7 @@
 
 <!-- Display dataIpOK -->
 <div class="borderSpacer" style="text-align:center">
+     <a id="dataIpOk"></a>
      <?php
      $i = 0;
      $m = 1;
@@ -239,12 +263,19 @@
         
      $numberIpOk = 0;  
      ?>
-
+              
      <table class="borderSpacer" style="margin:auto"> 
-          <u><h4>
-             Adresses <b style="color:Green">Ip OK</b>
-             <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
-          </h4></u>
+          <h4>
+               <u>Adresses <b style="color:Green">Ip OK</b></u>
+               <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
+
+               <a href="#red"><img src="../../assets/img/Circle_Red.png" alt="Ip Ko" title="Ip Ko" style="width:2.5rem;"></a>
+               <a href="#ipNotView"><img src="../../assets/img/Circle_Blue.png" alt="Ip Ok/Ko" title="Ip Ok/Ko" style="width:2.5rem;"></a>
+               <a href="#dataIpKoNormal"><img src="../../assets/img/Circle_Orange.png" alt="Ip KoSc" title="Ip KoSc" style="width:2.5rem;"></a>
+               <a href="#dataIpNotAssigned"><img src="../../assets/img/Circle_Grey.png" alt="Ip NotAss" title="Ip Not Assigned" style="width:2.5rem;"></a>
+
+               <a href="#haut"><img src="../../assets/img/top.png" alt="top" title="Retour en haut" style="width:3rem;"></a>
+          </h4>
           <?php      
           for ($o = 0; $o<=$NbrIp; $o++)
           {
@@ -295,6 +326,7 @@
 
 <!-- Display dataIpNotAssigned -->
 <div class="borderSpacer" style="text-align:center">
+     <a id="dataIpNotAssigned"></a>
      <?php
      $i = 0;
      $m = 1;
@@ -305,10 +337,19 @@
      ?>
 
      <table class="borderSpacer" style="margin:auto"> 
-          <b><u><h4>
-               Adresses <b style="color:grey">Ip</b> non assignées     
-               <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
-          </h4></u></b>
+          <b>
+               <h4>
+                    <u>Adresses <b style="color:grey">Ip</b> non assignÃ©es</u>
+                    <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
+
+                    <a href="#red"><img src="../../assets/img/Circle_Red.png" alt="Ip Ko" title="Ip Ko" style="width:2.5rem;"></a>
+                    <a href="#ipNotView"><img src="../../assets/img/Circle_Blue.png" alt="Ip Ok/Ko" title="Ip Ok/Ko" style="width:2.5rem;"></a>
+                    <a href="#dataIpKoNormal"><img src="../../assets/img/Circle_Orange.png" alt="Ip KoSc" title="Ip KoSc" style="width:2.5rem;"></a>
+                    <a href="#dataIpOk"><img src="../../assets/img/Circle_Green.png" alt="Ip Ok" title="Ok" style="width:2.5rem;"></a>
+
+                    <a href="#haut"><img src="../../assets/img/top.png" alt="top" title="Retour en haut" style="width:3rem;"></a>
+               </h4>
+          </b>
           
           <?php
           for ($o = 1; $o<=$NbrIp; $o++)
@@ -354,13 +395,13 @@
           
                <tr style="background-color:#FDFF8B">
                     <th class="borderTab">
-                         Désignation
+                         DÃ©signation
                     </th>
                     <th class="borderTab">
-                         Ip assignée
+                         Ip assignÃ©e
                     </th>
                     <th class="borderTab">
-                         Ip non assignée
+                         <a href="#dataIpNotAssigned">Ip non assignÃ©e</a>
                     </th>
                     <th class="borderTab">
                          Total
@@ -368,7 +409,7 @@
                </tr>
                <tr>
                     <td class="borderTab bckgroundKo">
-                         Ip Ko critique
+                         <a href="#red" style="color:white">Ip Ko critique</a>
                     </td>
                     <td class="borderTab bckgroundKo">
                          <?php echo $numberIpKoSurv; ?>

@@ -2,19 +2,17 @@
 <br>
 
 <div class="demo-list-action ">
-	<table class="borderSpacer ">
-	<br>
-		<tr>
-		<form method="post" action="inserer">
+	<form method="post" action="inserer">
+		<table class="borderSpacer ">
+		<br>
+			<tr>
+				<?php foreach($ipAddresses as $key=>$ipAddress): 
 
-			<?php foreach($ipAddresses as $key=>$ipAddress): 
-
-			include __DIR__ . "/../tile.html.php"; ?>
-						
-					</td>		
-					<td>
-						<table class="TextDescriptiveOneIp">
-							<!-- <form method="post" action="inserer"> -->
+				include __DIR__ . "/../tile.html.php"; ?>
+							
+						</td>		
+						<td>
+							<table class="TextDescriptiveOneIp">
 								<tr>
 									<td>Id : </td>
 									<td><input readonly type="number" name="id" style="background-color:#EBEBE4" value="<?php echo $ipAddress->getId() ?>"></td>
@@ -54,13 +52,13 @@
 								</tr>
 
 								<tr>
-								<td><?php if ($ipAddress->getStatus() == "OK") {echo "";} else { echo "Date du Ko : " ;}; ?> </td>
-								<td>
-									<?php if ($ipAddress->getStatus() == "OK") { ?>									
-									<?php } else { ?>
-										<input type="text" name="dateKo" value="<?php if ($ipAddress->getStatus() == "OK") {echo "";} else {echo $ipAddress->getDateKo();}; ?>">
-									<?php } ?>
-								</td>
+									<td><?php if ($ipAddress->getStatus() == "OK") {echo "";} else { echo "Date du Ko : " ;}; ?> </td>
+									<td>
+										<?php if ($ipAddress->getStatus() == "OK") { ?>									
+										<?php } else { ?>
+											<input type="text" name="dateKo" value="<?php if ($ipAddress->getStatus() == "OK") {echo "";} else {echo $ipAddress->getDateKo();}; ?>">
+										<?php } ?>
+									</td>
 								</tr>
 								<tr>
 									<td><?php if ($ipAddress->getStatus() == "OK") {echo "";} else { echo "Heure du Ko : " ;}; ?> </td>
@@ -71,35 +69,19 @@
 										<?php } ?>
 									</td>
 								</tr>
+							</table>						
+						</td>
+				<?php endforeach; ?>
+				</tr>
+				</td>
+			</tr>		
+		</table>
 
-								<!-- <tr>
-									<td>Date du dernier Ko : </td>
-									<td><input type="text" name="dateKo" value="<?php if ($ipAddress->getStatus() == "OK") {echo "";} else {echo $ipAddress->getDateKo();}; ?>"></td>
-								</tr>
-								<tr>
-								<td>Heure dernier Ko : </td>
-									<td><input readonly type="text" name="dateDernOn" style="background-color:#EBEBE4" value="Voir ci-dessus"></td>
-								</tr> -->
+		<table style="margin:auto">
+				<td><button type="submit" ><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>"></td>
+		</table>
 
-								<!-- <tr style="height:20px"></tr> -->
-								<!-- <tr>									
-									<td></td>
-									<td><button type="submit"><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>"></td>
-								</tr> -->
-							<!-- </form> -->
-						</table>						
-					</td>
-			<?php endforeach; ?>
-			</tr>
-			</td>
-		</tr>		
-	</table>
-
-	<table style="margin:auto">
-			<td><button type="submit" ><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>"></td>
-	</table>
 	</form>
-
 	<br><br>
 </div>
 <?php include __DIR__ . "/../baseClose.html.php"; ?>

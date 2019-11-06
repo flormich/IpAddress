@@ -24,7 +24,7 @@ echo '<tr>
     <td>Hostname</td>
     </tr>';
 
-echo PingController::ping();
+controller::ping();
 
 echo "</table>";
 

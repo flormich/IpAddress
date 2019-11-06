@@ -3,8 +3,8 @@
 
   <head>
       <title>Ip Address</title>
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">      
+      <!-- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">       -->
+      <meta http-equiv="Content-Type" content="text/html; utf-8">      
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="Addresse IP Lorge">
   
@@ -89,7 +89,7 @@
                   <a href="/public/index.php/byName"><img class="icoNiveau2" src="/assets/img/juk.png" alt="Sort by name" title="Trier par nom" ></a> : Nom
                 </li>                                 
                 <li>
-                  <a href="/public/index.php/byTypeMat"><img class="icoNiveau2" src="/assets/img/Headphones.png" alt="Sort by material type" title="Trier par type de matériel" ></a> : Type de matériel
+                  <a href="/public/index.php/byTypeMat"><img class="icoNiveau2" src="/assets/img/Headphones.png" alt="Sort by material type" title="Trier par type de matÃ©riel" ></a> : Type de matÃ©riel
                 </li>                                 
                 <li>                                 
                   <a href="/public/index.php/lastAdd"><img class="icoNiveau2" src="/assets/img/last_add.png" alt="Last add" title="Trier par dernier ajout" ></a> : Derniers ajouts
@@ -103,42 +103,24 @@
                   <a href="/public/index.php/freeIp"><img class="icoNiveau2" src="/assets/img/freeCat.png" alt="All IpAddress" title="Tous les ip"></a> : Tous les Ip                               
                 </li>
                 <li>
-                  <a href="/public/index.php/freeIpByCat"><img class="icoNiveau2" src="/assets/img/free.png" alt="State Ip" title="Ip par état de connexion"></a> : Par cat conn 
+                  <a href="/public/index.php/freeIpByCat"><img class="icoNiveau2" src="/assets/img/free.png" alt="State Ip" title="Ip par Ã©tat de connexion"></a> : Par cat conn 
                 </li>                                 
               </ul>
             </li>
           </ul>
-            
-          <!-- Drop down 3 
-          <ul class="niveau1 ">
-            <li>
-              <img class="icoNiveau1" src="/assets/img/free.png" alt="Sort by " title="Ip Trier par " >
-              <ul class="niveau2 DropDownMenu">
-                <li>
-                  <a href="/public/index.php/freeIp"><img class="icoNiveau2" src="/assets/img/free.png" alt="Free Ip" title="Ip Libre"></a> : Tous les Ip
-                </li>                                 
-                <li>
-                  <a href="/public/index.php/freeIpByCat"><img class="icoNiveau2" src="/assets/img/freeCat.png" alt="Free Ip" title="Ip Libre"></a> : Par cat conn
-                </li>                                 
-              </ul>
-            </li>
-          </ul> -->
 
           <!-- Space between left icon and dernier ping text -->
             <div class="mdl-layout-spacer"></div>
             <b style="text-align:center"> 
-              <?php echo "Dernier Ping effectué le :" . "<br>" . date('d/m/Y', strtotime($_SESSION['date'])). "<br>" . date('H:i', strtotime($_SESSION['date'])); ?> 
+              <?php echo "Dernier Ping effectuÃ© le :" . "<br>" . date('d/m/Y', strtotime($_SESSION['date'])). "<br>" . date('H:i', strtotime($_SESSION['date'])); ?> 
             </b>
           
           <!-- Space between left icon and right icon-->
             <div class="mdl-layout-spacer"></div>
           
           <!-- Left icon -->
-            <!-- <a class="mdl-navigation__link" href="/public/index.php/pingOkDansBDD">Envoyer les ping Ok dans la BDD</a>           -->
           <!-- Delete Toute la BDD -->
             <a  href="/public/index.php/deleteAll##"><img class="ico" src="/../assets/img/Trash.png" alt="Delete la BDD" title="Delete la BDD" ></a>
-
-            <!-- <a href="/public/index.php/search"><img class="ico" src="/assets/img/Search.png" alt="search" title="Rechercher" style="width:2.3rem"></a> -->
             <a href="../../../template/app/search.html.php"><img class="ico" src="/assets/img/Search.png" alt="search" title="Rechercher" style="width:2.3rem"></a>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
@@ -146,7 +128,7 @@
 
           <!-- search / chercher / rechercher -->
               <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
-                    <!-- <img src="/assets/img/Search.png" alt="Search" title="Chercher" style="width:2.3rem"> -->
+                <!-- <img src="/assets/img/Search.png" alt="Search" title="Chercher" style="width:2.3rem"> -->
 
 
                 <!-- <i class="material-icons">search</i> -->

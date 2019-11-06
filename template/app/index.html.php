@@ -16,7 +16,7 @@
                               if ($key >= ($nbrDIpParLigne * $i) && $key < ($nbrDIpParLigne * ($i+1))) { ?>
 
 
-                    <?php include __DIR__ . "/../tile.html.php"; ?>
+<?php include __DIR__ . "/../tile.html.php"; ?>
 
                     
                     </td>

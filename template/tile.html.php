@@ -63,7 +63,7 @@
 							<b style="color:Blue">
 								<?= $ipAddress->getName() . "<br>" . " (" . $ipAddress->getTypeMat() . ")"; ?>
 							</b>
-							<?php
+						<?php
 					}
 					?>
 				</td>
@@ -73,8 +73,9 @@
 				<td>
 					<?php
 					if (!empty($ipAddress->getDateDernOn()))
-				{
-						if($ipAddress->getStatus() == 'OK'){
+					{
+						if($ipAddress->getStatus() == 'OK')
+						{
 							echo "" . "<br>";
 							echo date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn()));											
 						} else {
@@ -132,10 +133,12 @@
 					<a href="/public/index.php/delete/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="/assets/img/Full Trash.png" alt="delete" title="Delete de <?= $ipAddress->getIp()?>" ></a>
 					<a href="/public/index.php/edit/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="/assets/img/edit_2.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>" ></a>
 					<?php 
-					if ($ipAddress->getTypeMat() == 'Imprimante' OR ($ipAddress->getTypeMat() == 'SRV') OR ($ipAddress->getTypeMat() == 'Etiquette') OR ($ipAddress->getTypeMat() == 'BOX') OR ($ipAddress->getTypeMat() == 'Routeur') OR ($ipAddress->getTypeMat() == 'Switch')) {
+					if ($ipAddress->getTypeMat() == 'Imprimante' OR ($ipAddress->getTypeMat() == 'SRV') OR ($ipAddress->getTypeMat() == 'Etiquette') OR ($ipAddress->getTypeMat() == 'BOX') OR ($ipAddress->getTypeMat() == 'Routeur') OR ($ipAddress->getTypeMat() == 'Switch')) 
+					{
 					?>
 						<a href="\\<?= $ipAddress->getIp()?>" target="_blank"> <img class="icoGauche" src="/assets/img/link.png" alt="edit" title="Lien vers <?= $ipAddress->getIp()?>" ></a>
-					<?php } else {} ?>
+					<?php 
+					} else {} ?>
 				</td>
 			</tr>
 		</table>
