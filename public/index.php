@@ -3,7 +3,6 @@
     <head>
         <!-- rafraichir / actualiser / refresh / actualisation-->
         <META HTTP-EQUIV="Refresh" CONTENT="300; URL=/public/index.php/ipUpdate">
-        <meta charset = "utf-8">
     </head>
 </html>
 
