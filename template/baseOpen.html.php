@@ -29,7 +29,7 @@
           <!-- home -->
             <a href="/public/"><img class="icoNiveau1" src="/assets/img/Home.png" alt="Homepage" title="Homepage"></a>
           <!-- Ping total -->
-            <a class="mdl-navigation__link"  href="/template/app/pingTotalite.html.php##">Ping Total</a>
+            <!-- <a class="mdl-navigation__link"  href="/template/app/pingTotalite.html.php">Ping Total</a> -->
           <!-- Ping Update -->
             <a href="/public/index.php/ipUpdate"><img class="icoNiveau1" src="/assets/img/Refresh.png" alt="Update" title="Mise a jour"></a>
 
