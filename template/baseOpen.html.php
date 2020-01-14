@@ -94,6 +94,9 @@
                 <li>                                 
                   <a href="/public/index.php/lastAdd"><img class="icoNiveau2" src="/assets/img/last_add.png" alt="Last add" title="Trier par dernier ajout" ></a> : Derniers ajouts
                 </li> 
+                <li>                                 
+                  <a href="/public/index.php/undefinedName"><img class="icoNiveau2" src="/assets/img/Type_wrong.png" alt="Last add" title="Afficher les sans nom"></a> : Undefined Name
+                </li> 
 
                 <li>
                   <hr>
@@ -108,6 +111,9 @@
               </ul>
             </li>
           </ul>
+
+          <!-- trial -->
+            <a href="/public/index.php/trial"><img class="icoNiveau1" src="/assets/img/free.png" alt="TrialPage" title="TrialPage"></a>
 
           <!-- Space between left icon and dernier ping text -->
             <div class="mdl-layout-spacer"></div>

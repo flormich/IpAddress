@@ -153,10 +153,19 @@
         "action" : "displaySearchIpAddressIp"
     },
 
+    "trial": {
+        "method" : "get",
+        "path" : "/public/index.php/trial",
+        "controller" : "ControllerAddress",
+        "action" : "trial"
+    },
 
-
-
-
+    "undefinedName": {
+        "method" : "get",
+        "path" : "/public/index.php/undefinedName",
+        "controller" : "ControllerAddress",
+        "action" : "displayUndefinedName"
+    },
 
     "freeIpByCat" : {
         "method" : "get",

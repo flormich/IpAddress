@@ -192,7 +192,7 @@
 
      <table class="borderIpKoNoNormal"> 
           <h4>
-               <u>Adresses <b style="color:orange">Ip Ko </b> sans consÃ©quence</u>
+               <u>Adresses <b style="color:orange">Ip Ko </b> sans conséquence</u>
                <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
 
                <a href="#red"><img src="../../assets/img/Circle_Red.png" alt="Ip Ko" title="Ip Ko" style="width:2.5rem;"></a>

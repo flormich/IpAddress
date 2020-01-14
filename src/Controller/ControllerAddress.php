@@ -61,7 +61,7 @@ class ControllerAddress extends Controller
     public function displayIpAddressLabel()
     {
         $pdo = $this->getPdo();
-        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE type_mat = "Etiquette" ORDER BY ip_Num';
+        $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE type_mat = "Zebra" ORDER BY ip_Num';
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $ipAddresses = $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
@@ -248,6 +248,20 @@ class ControllerAddress extends Controller
         ]);        
     }
 
+    public function displayUndefinedName()
+    {
+            $pdo = $this->getPdo();
+            $sql = "SELECT id, ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress WHERE type_mat=''";
+            $sth = $pdo->prepare($sql);
+            $sth->execute();
+            $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);        
+    
+            return $this->render("app/index.html.php", [
+                "ipAddresses" => $ipAddresses,
+                // "token" => $this->isCsrfTokenValid(),
+            ]);
+        }
+
 
     //Create IpAddress
     public function createIpAddress()
@@ -279,6 +293,42 @@ class ControllerAddress extends Controller
                 }
             }
         }
+    }
+
+    //Trial IpAddress
+    public function trial()
+    {          
+        // $i=0;
+        $total = 0;
+        for ($i=0; $i<20; $i++){
+            $output = '$output' . $i . "<br>";
+            echo "Ici 192.168.0.$i" . "<br>";
+            // exec ("timeout 0.025 ping -c1 192.168.0.$i", $output);
+            // exec ("nmap -sP -PT -PI -T5 192.168.0.$i", $output);
+            // exec ("nmap -sP -PA -PS -PU -PI -T5 192.168.0.$i", $output);
+            exec ("sudo nmap -sS -T5 192.168.0.$i", $output);
+            // shell_exec("sudo php -v");
+                if (isset($output[4])) 
+                { 
+                    // $str = strtr($output[4], "scanned", "address");
+                    // $str = explode('address', $str,2);
+                    $total++;
+                    var_dump ($output[4]);
+                    // var_dump ($str);
+                } else { 
+                    echo "Ip Free";
+                    // var_dump ($output);
+                }
+                // var_dump ($output);
+                // var_dump ($Status);
+            echo "<br><br>";
+            echo $total;                
+        }
+
+        return $this->render("trial.html.php", [
+            // "ipAddresses" => $ipAddresses,
+            // "token" => $this->isCsrfTokenValid(),
+        ]);   
     }
 
     //Update IpAddress
