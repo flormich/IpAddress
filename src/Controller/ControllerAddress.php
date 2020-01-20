@@ -297,38 +297,68 @@ class ControllerAddress extends Controller
 
     //Trial IpAddress
     public function trial()
-    {          
-        // $i=0;
-        $total = 0;
-        for ($i=0; $i<20; $i++){
-            $output = '$output' . $i . "<br>";
-            echo "Ici 192.168.0.$i" . "<br>";
-            // exec ("timeout 0.025 ping -c1 192.168.0.$i", $output);
-            // exec ("nmap -sP -PT -PI -T5 192.168.0.$i", $output);
-            // exec ("nmap -sP -PA -PS -PU -PI -T5 192.168.0.$i", $output);
-            exec ("sudo nmap -sS -T5 192.168.0.$i", $output);
-            // shell_exec("sudo php -v");
-                if (isset($output[4])) 
-                { 
-                    // $str = strtr($output[4], "scanned", "address");
-                    // $str = explode('address', $str,2);
-                    $total++;
-                    var_dump ($output[4]);
-                    // var_dump ($str);
-                } else { 
-                    echo "Ip Free";
-                    // var_dump ($output);
-                }
-                // var_dump ($output);
-                // var_dump ($Status);
-            echo "<br><br>";
-            echo $total;                
-        }
+    {         
+        $fichier = file("/home/florian/www/lorge.org/www/IpAddress/data/nmap-cron.txt");
+            $der_ligne = $fichier[count($fichier)-1];
 
-        return $this->render("trial.html.php", [
-            // "ipAddresses" => $ipAddresses,
-            // "token" => $this->isCsrfTokenValid(),
-        ]);   
+            foreach ($fichier as $line_num => $ligne) {
+                $affDernLigne = $line_num;
+            }
+                
+            foreach ($fichier as $line_num => $line) 
+            {
+                if ($line_num == 0 || $line_num == 1 || $line_num == $affDernLigne) 
+                {
+                } else {                    
+                    $chars = preg_split('( )', $line);
+                    if (!empty($chars[5][0])) 
+                    {
+                        $chars5 = ($chars[5]);
+                        $charsexp1 = explode("(",$chars5);
+                        $charsexp2 = explode(")",$charsexp1[1]);
+                        echo ("IP = " . $charsexp2[0] . "<br>");
+                    } else {
+                        if ($chars[4][0] == 1) {
+                            echo ("IP = " . $chars[4] . "<br>");
+                        } 
+                    }
+                }                    
+            }                        
+            return $this->render("trial.html.php", [
+                            
+            ]);
+                            
+                            // // $i=0;
+                            // $total = 0;
+                            // for ($i=0; $i<20; $i++){
+                                //     $output = '$output' . $i . "<br>";
+        //     echo "Ici 192.168.0.$i" . "<br>";
+        //     // exec ("timeout 0.025 ping -c1 192.168.0.$i", $output);
+        //     // exec ("nmap -sP -PT -PI -T5 192.168.0.$i", $output);
+        //     // exec ("nmap -sP -PA -PS -PU -PI -T5 192.168.0.$i", $output);
+        //     exec ("sudo nmap -sS -T5 192.168.0.$i", $output);
+        //     // shell_exec("");
+        //         if (isset($output[4])) 
+        //         { 
+        //             // $str = strtr($output[4], "scanned", "address");
+        //             // $str = explode('address', $str,2);
+        //             $total++;
+        //             var_dump ($output[4]);
+        //             // var_dump ($str);
+        //         } else { 
+        //             echo "Ip Free";
+        //             // var_dump ($output);
+        //         }
+        //         // var_dump ($output);
+        //         // var_dump ($Status);
+        //     echo "<br><br>";
+        //     echo $total;                
+        // }
+
+        // return $this->render("trial.html.php", [
+        //     // "ipAddresses" => $ipAddresses,
+        //     // "token" => $this->isCsrfTokenValid(),
+        // ]);   
     }
 
     //Update IpAddress
@@ -364,7 +394,7 @@ class ControllerAddress extends Controller
             }
         }
        
-        //pour mettre dans une session la date et l'heure de la mise à jour que je récupérer dans baseOpen.html.php
+        //pour mettre dans une session la date et l'heure de la mise ï¿½ jour que je rï¿½cupï¿½rer dans baseOpen.html.php
         {
             $pdo = $this->getPdo();
             $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress ORDER BY ip_Num';
