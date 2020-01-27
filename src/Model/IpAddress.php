@@ -13,6 +13,7 @@ class IpAddress
     private $ip_Num;
     private $name;
     private $type_mat;
+    private $detail;
 
     /**
      * Get the value of id
@@ -156,6 +157,27 @@ class IpAddress
     public function setTypeMat(string $typeMat)
     {
         $this->typeMat = $typeMat;
+
+        return $this;
+    }
+
+
+    /**
+     * Get the value of typeMat
+     */ 
+    public function getDetail()
+    {
+        return $this->detail;
+    }
+
+    /**
+     * Set the value of detail
+     *
+     * @return  self
+     */ 
+    public function setDetail(string $detail)
+    {
+        $this->detail = $detail;
 
         return $this;
     }

@@ -33,6 +33,10 @@
 									<td>Type : </td>
 									<td><input type="text" name="typeMat" value="<?php echo $ipAddress->getTypeMat() ?>"></td>
 								</tr>
+								<tr>
+									<td>Détail : </td>
+									<td><input type="text" name="typeMat" value="<?php echo $ipAddress->getDetail() ?>"></td>
+								</tr>
 
 								<tr>
 									<td style="height:50px"></td>

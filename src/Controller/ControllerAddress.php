@@ -24,7 +24,9 @@ class ControllerAddress extends Controller
         foreach($ipAddresses as $ipAddress) {
             $date = $ipAddress->getDateDernOn();
         }
-        $_SESSION['date'] = "$date";
+
+        if (empty($date)){ $_SESSION['date'] = ""; } else {$_SESSION['date'] = "$date";;}
+        // $_SESSION['date'] = "$date";
 
         return $this->render("app/index.html.php", [
             "ipAddresses" => $ipAddresses,
@@ -266,99 +268,116 @@ class ControllerAddress extends Controller
     //Create IpAddress
     public function createIpAddress()
     {
-        for ($RESEAU = 0; $RESEAU <= 1; $RESEAU++)
-        {
-            $IP = 1;
-            while ($IP <= 255)
-            {
-                $host = 'host 192.168.$RESEAU.$IP';
-                exec("timeout 0.025 ping -c1 192.168.$RESEAU.$IP", $output, $Status); 
-                {
-                    if ($Status == 0){   
-                        $date = date("Y-m-d H:i");                        
-                        $ipNum = ip2long("192.168.$RESEAU.$IP");                        
+        $fichier = file("/home/florian/www/lorge.org/www/IpAddress/data/nmap-cron.txt");
+        $der_ligne = $fichier[count($fichier)-1];
 
-                        $sql = "INSERT INTO IpAddress VALUE ('', '192.168.$RESEAU.$IP', 'OK', '$date', '', $ipNum, '', '')";
-                        $pdo = $this->getPdo();
-                        $sth = $pdo->prepare($sql);
-                        $sth->execute();
-                
-                        $response = $this->getResponse();
-                        $response->setHeader([
-                            "Location" => "Controller.php"
-                        ]);                        
-                        // return $response;
-                    }
-                    $IP++;
-                }
-            }
+        foreach ($fichier as $line_num => $ligne) {
+            $affDernLigne = $line_num;
         }
+            
+        foreach ($fichier as $line_num => $line) 
+        {
+            if ($line_num == 0 || $line_num == 1 || $line_num == $affDernLigne) 
+            {
+            } else {             
+                $date = date("Y-m-d H:i");
+
+                $chars = preg_split('( )', $line);
+                if (!empty($chars[5][0])) 
+                {
+                    $chars5 = ($chars[5]);
+                    $charsexp1 = explode("(",$chars5);
+                    $charsexp2 = explode(")",$charsexp1[1]);
+                    
+                    $ipNum = ip2long("$charsexp2[0]");                    
+                    $sql = "INSERT INTO IpAddress VALUE ('', '$charsexp2[0]', 'OK', '$date', '', $ipNum, '', '', '')";
+                    $pdo = $this->getPdo();
+                    $sth = $pdo->prepare($sql);
+                    $sth->execute();
+
+                } else if (($chars[4][0])==1) 
+                {
+                    $chars4 = ($chars[4]);
+                    $charsexp2 = preg_replace('/\s/', '', $chars4);
+                    
+                    $ipNum = ip2long("$charsexp2");
+                    $sql = "INSERT INTO IpAddress VALUE ('', '$charsexp2', 'OK', '$date', '', $ipNum, '', '', '')";
+                    $pdo = $this->getPdo();
+                    $sth = $pdo->prepare($sql);
+                    $sth->execute();
+                }
+            }                  
+        }                        
+        $response = $this->getResponse();
+        $response->setHeader([
+            "Location" => "../../public/"
+        ]);  
+        return $response;
     }
+
+    // public function createIpAddress()
+    // {
+    //     for ($RESEAU = 0; $RESEAU <= 1; $RESEAU++)
+    //     {
+    //         $IP = 1;
+    //         while ($IP <= 255)
+    //         {
+    //             $host = 'host 192.168.$RESEAU.$IP';
+    //             exec("timeout 0.025 ping -c1 192.168.$RESEAU.$IP", $output, $Status); 
+    //             {
+    //                 if ($Status == 0){   
+    //                     $date = date("Y-m-d H:i");                        
+    //                     $ipNum = ip2long("192.168.$RESEAU.$IP");    
+
+    //                     $sql = "INSERT INTO IpAddress VALUE ('', '192.168.$RESEAU.$IP', 'OK', '$date', '', $ipNum, '', '', '')";
+    //                     $pdo = $this->getPdo();
+    //                     $sth = $pdo->prepare($sql);
+    //                     $sth->execute();
+                
+    //                     $response = $this->getResponse();
+    //                     $response->setHeader([
+    //                         "Location" => "Controller.php"
+    //                     ]);                        
+    //                     return $response;
+    //                 }
+    //                 $IP++;
+    //             }
+    //         }
+    //     }
+    // }
 
     //Trial IpAddress
     public function trial()
     {         
         $fichier = file("/home/florian/www/lorge.org/www/IpAddress/data/nmap-cron.txt");
-            $der_ligne = $fichier[count($fichier)-1];
+        $der_ligne = $fichier[count($fichier)-1];
 
-            foreach ($fichier as $line_num => $ligne) {
-                $affDernLigne = $line_num;
-            }
+        foreach ($fichier as $line_num => $ligne) {
+            $affDernLigne = $line_num;
+        }
                 
-            foreach ($fichier as $line_num => $line) 
+        foreach ($fichier as $line_num => $line) 
+        {
+            if ($line_num == 0 || $line_num == 1 || $line_num == $affDernLigne) 
             {
-                if ($line_num == 0 || $line_num == 1 || $line_num == $affDernLigne) 
+            } else {                    
+                $chars = preg_split('( )', $line);
+                if (!empty($chars[5][0])) 
                 {
-                } else {                    
-                    $chars = preg_split('( )', $line);
-                    if (!empty($chars[5][0])) 
-                    {
-                        $chars5 = ($chars[5]);
-                        $charsexp1 = explode("(",$chars5);
-                        $charsexp2 = explode(")",$charsexp1[1]);
-                        echo ("IP = " . $charsexp2[0] . "<br>");
-                    } else {
-                        if ($chars[4][0] == 1) {
-                            echo ("IP = " . $chars[4] . "<br>");
-                        } 
-                    }
-                }                    
-            }                        
-            return $this->render("trial.html.php", [
-                            
-            ]);
-                            
-                            // // $i=0;
-                            // $total = 0;
-                            // for ($i=0; $i<20; $i++){
-                                //     $output = '$output' . $i . "<br>";
-        //     echo "Ici 192.168.0.$i" . "<br>";
-        //     // exec ("timeout 0.025 ping -c1 192.168.0.$i", $output);
-        //     // exec ("nmap -sP -PT -PI -T5 192.168.0.$i", $output);
-        //     // exec ("nmap -sP -PA -PS -PU -PI -T5 192.168.0.$i", $output);
-        //     exec ("sudo nmap -sS -T5 192.168.0.$i", $output);
-        //     // shell_exec("");
-        //         if (isset($output[4])) 
-        //         { 
-        //             // $str = strtr($output[4], "scanned", "address");
-        //             // $str = explode('address', $str,2);
-        //             $total++;
-        //             var_dump ($output[4]);
-        //             // var_dump ($str);
-        //         } else { 
-        //             echo "Ip Free";
-        //             // var_dump ($output);
-        //         }
-        //         // var_dump ($output);
-        //         // var_dump ($Status);
-        //     echo "<br><br>";
-        //     echo $total;                
-        // }
-
-        // return $this->render("trial.html.php", [
-        //     // "ipAddresses" => $ipAddresses,
-        //     // "token" => $this->isCsrfTokenValid(),
-        // ]);   
+                    $chars5 = ($chars[5]);
+                    $charsexp1 = explode("(",$chars5);
+                    $charsexp2 = explode(")",$charsexp1[1]);
+                    echo ("IP = " . $charsexp2[0] . "<br>");
+                } else {
+                    if ($chars[4][0] == 1) {
+                        echo ("IP = " . $chars[4] . "<br>");
+                    } 
+                }
+            }                    
+        }                        
+        return $this->render("trial.html.php", [
+                        
+        ]);
     }
 
     //Update IpAddress
@@ -373,7 +392,7 @@ class ControllerAddress extends Controller
                     $date = date("Y-m-d H:i");
                     if ($Status == 0){    
                         $ipNum = ip2long("192.168.$RESEAU.$IP");                       
-                        $sql = "INSERT INTO IpAddress VALUE ('', '192.168.$RESEAU.$IP', 'OK', '$date', '', '$ipNum', '', '') ON DUPLICATE KEY UPDATE status = 'OK', date_dern_on = '$date', date_ko = ''";
+                        $sql = "INSERT INTO IpAddress VALUE ('', '192.168.$RESEAU.$IP', 'OK', '$date', '', '$ipNum', '', '', '') ON DUPLICATE KEY UPDATE status = 'OK', date_dern_on = '$date', date_ko = ''";
                         $pdo = $this->getPdo();
                         $sth = $pdo->prepare($sql);
                         $sth->execute();
@@ -394,7 +413,7 @@ class ControllerAddress extends Controller
             }
         }
        
-        //pour mettre dans une session la date et l'heure de la mise � jour que je r�cup�rer dans baseOpen.html.php
+        //pour mettre dans une session la date et l'heure de la mise à jour que récupération dans baseOpen.html.php
         {
             $pdo = $this->getPdo();
             $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress ORDER BY ip_Num';

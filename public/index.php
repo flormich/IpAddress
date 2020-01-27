@@ -31,7 +31,6 @@ foreach ($routes as $route) {
         $controller = new $className($response); 
         array_shift($match);          
         $response = $controller->{$route->action}(...$match);    
-
     }
 }
 if (!isset($controller)) {
@@ -39,7 +38,7 @@ if (!isset($controller)) {
     $response->setBody("No route found for the path :" . $uri);
 }
 
-header("HTTP/1.1 " . $response->getStatusCode() . " " . $response->getStatusText());  
+header("HTTP/1.1 " . $response->getStatusCode() . " " . $response->getStatusText());
 foreach ($response->getHeader() as $key => $value) {               
     header($key . ": " . $value);                                   
 }

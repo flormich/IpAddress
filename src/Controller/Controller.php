@@ -66,17 +66,6 @@ class Controller implements ControllerInterface
         || $token->getIp() !== filter_input(INPUT_SERVER,"REMOTE_ADDR")
         || $token->getUserAgent() !== filter_input(INPUT_SERVER,"HTTP_USER_AGENT")) {
             return false;
-
-        //ci-dessus au lieu de ce-dessous grace au point 1 de rolesCOntroller
-        // $inputToken = filter_input(INPUT_GET,"token");
-        // if (!$inputToken) {
-        //     $inputToken = filter_input(INPUT_POST, "token");
-        // }
-        // if ((string) $token !== $inputToken
-        //  || $this->getToken()->getIp() !== filter_input(INPUT_SERVER,"REMOTE_ADDR")
-        //  || $this->getToken()->getUserAgent() !== filter_input(INPUT_SERVER,"HTTP_USER_AGENT")) {
-        //     echo "Pas OK";
-        //     return false;
         }
         return true;
     }

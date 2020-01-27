@@ -34,6 +34,10 @@
 								<td>Type : </td>
 								<td><input readonly type="text" name="typeMat" style="background-color:#EBEBE4" value="<?php echo $ipAddress->getTypeMat() ?>"></td>
 							</tr>
+							<tr>
+								<td>Détail : </td>
+								<td><input readonly type="text" name="typeMat" style="background-color:#EBEBE4" value="<?php echo $ipAddress->getDetail() ?>"></td>
+							</tr>
 
 							<tr>
 								<td style="height:50px"></td>

@@ -12,10 +12,13 @@
      ];
      }
 
-     
+     if (empty($ipBdd)) {
+          ?><b style = "height:450px"><h3><center><b style="color:red">Aucune </b>donnée dans la BDD</center></h3></b><?php
+     } else {
 
-     $date = $ipAddress->getDateDernOn();
-     echo $date;
+          $date = $ipAddress->getDateDernOn();
+          echo $date;
+     }
 
      $ipFreeArray = array ();
      $ip = 0 ;
@@ -25,12 +28,11 @@
           ];
      }
 ?>
-
 <br>
-
 <?php include "../config/variable.php"; ?>
 
 <!-- Display data IpKoSurv -->
+<?php if (!empty($ipBdd)) {  ?>
 <div class="borderSpacer" style="text-align:center">
      <a id="haut"></a>
      <a id="red"></a>
@@ -40,22 +42,19 @@
      $m = 1;
      $t = 1;
          
-     $numberIpKoSurv = 0; 
+     $numberIpKoSurv = 0;
      ?>
-
      <table class="borderIpKoNoNormal"> 
           <h4>
-               <u> Adresses <b style="color:red"> Ip Ko</b> à surveiller</u>
+               <u> Adresses <b style="color:red"> Ip Ping Ko</b> A surveiller</u>
                <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
-
                <a href="#ipNotView"><img src="../../assets/img/Circle_Blue.png" alt="Ip Ok/Ko" title="Ip Ok/Ko" style="width:2.5rem;"></a>
                <a href="#dataIpKoNormal"><img src="../../assets/img/Circle_Orange.png" alt="Ip KoSc" title="Ip KoSc" style="width:2.5rem;"></a>
                <a href="#dataIpOk"><img src="../../assets/img/Circle_Green.png" alt="Ip Ok" title="Ip Ok" style="width:2.5rem;"></a>
                <a href="#dataIpNotAssigned"><img src="../../assets/img/Circle_Grey.png" alt="Ip NotAss" title="Ip Not Assigned" style="width:2.5rem;"></a>
-
           </h4>
           <?php 
-     
+          
           for ($o = 0; $o<=$NbrIp; $o++)
           {
                if ($ipBdd[$i]["ip"] == $ipFreeArray[$o]["ip"])
@@ -68,7 +67,8 @@
                     } else {
                          $t++;
                     }
-                    if ($ipBdd[$i]['status'] == "Ko" && (($ipBdd[$i]['type'] == 'SRV') || ($ipBdd[$i]['type'] == 'BOX') || ($ipBdd[$i]['type'] == 'Imprimante') || ($ipBdd[$i]['type'] == 'Surveillance'))) {
+                    if ($ipBdd[$i]['status'] == "Ko" && (($ipBdd[$i]['type'] == 'SRV') || ($ipBdd[$i]['type'] == 'BOX') || ($ipBdd[$i]['type'] == 'Imprimante') || ($ipBdd[$i]['type'] == 'Surveillance'))) 
+                    {
                          ?>
                          <td class="borderBusyIp bckgroundKo" onclick="document.location='/public/index.php/resultSearch/<?= $ipBdd[$i]['ip'] ?>'">
                               <b style="color:GreenYellow">
@@ -98,7 +98,7 @@
           ?> <i><b style="color:red; font-size:2em"> <?php
           echo $numberIpKoSurv;
           $NbrIpParCat = $NbrIpParCat + $numberIpKoSurv;
-     ?> 
+          ?> 
      </b></i>
      </tr></table>
 </div>
@@ -192,7 +192,7 @@
 
      <table class="borderIpKoNoNormal"> 
           <h4>
-               <u>Adresses <b style="color:orange">Ip Ko </b> sans cons�quence</u>
+               <u>Adresses <b style="color:orange">Ip Ping Ko </b> sans conséquence</u>
                <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
 
                <a href="#red"><img src="../../assets/img/Circle_Red.png" alt="Ip Ko" title="Ip Ko" style="width:2.5rem;"></a>
@@ -252,7 +252,6 @@
 
 <br><hr>
 
-
 <!-- Display dataIpOK -->
 <div class="borderSpacer" style="text-align:center">
      <a id="dataIpOk"></a>
@@ -266,7 +265,7 @@
               
      <table class="borderSpacer" style="margin:auto"> 
           <h4>
-               <u>Adresses <b style="color:Green">Ip OK</b></u>
+               <u>Adresses <b style="color:Green">Ip Ping OK</b></u>
                <a href="#info"><img src="../../assets/img/Info.png" alt="Infos" title="Informations" style="width:2.5rem;"></a>
 
                <a href="#red"><img src="../../assets/img/Circle_Red.png" alt="Ip Ko" title="Ip Ko" style="width:2.5rem;"></a>
@@ -464,6 +463,9 @@
      </tr></table>
 </div>
 
+<!-- ligne de séparation -->
 <br><br><br><hr><br><br><br>
+
+<?php } ?>
 
 <?php include __DIR__ . "/../baseClose.html.php"; ?>
