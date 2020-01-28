@@ -351,7 +351,7 @@
           </b>
           
           <?php
-          for ($o = 1; $o<=$NbrIp; $o++)
+          for ($o = 0; $o<=$NbrIp; $o++)
           {                       
                if (($ipBdd[$i]["ip"]) != ($ipFreeArray[$o]["ip"])) {                   
                     if ($m == $t ){

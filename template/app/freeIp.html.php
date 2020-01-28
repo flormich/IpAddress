@@ -81,7 +81,7 @@
                          $i++;
                     } 
                }               
-          ?> 
+               ?> 
           </table>
      </div>
 
@@ -90,13 +90,13 @@
      <div class="borderSpacer" style="text-align:center">
           <?php
           $i = 0;
-          $m = 1;     
+          $m = 0;     
 
           ?> 
           <table class="borderSpacer" style="margin:auto"> 
                <b><u><h4>Totalité des adresses <b style="color:blue">Ip</b></h4></u></b>
                <?php
-                    for ($o = 1; $o<=$NbrIp; $o++)
+                    for ($o = 0; $o<=$NbrIp; $o++)
                     {
                          if (empty($ipBdd)) 
                          {

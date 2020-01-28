@@ -6,11 +6,18 @@
         "action" : "displayIpAddress"  
     },
 
-    "ipUpdate" : {
+    "ipUpdatePing" : {
         "method" : "get",
-        "path" : "/public/index.php/ipUpdate",
+        "path" : "/public/index.php/ipUpdatePing",
         "controller" : "ControllerAddress",
-        "action" : "updateIpAddress"
+        "action" : "updateIpAddressPing"
+    },
+
+    "ipUpdateCron" : {
+        "method" : "get",
+        "path" : "/public/index.php/ipUpdateCron",
+        "controller" : "ControllerAddress",
+        "action" : "updateIpAddressCron"
     },
     
     "ipComputer" : {

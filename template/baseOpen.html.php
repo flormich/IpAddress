@@ -32,7 +32,8 @@
             <!-- <a class="mdl-navigation__link"  href="/template/app/pingTotalite.html.php">Ping Total</a> -->
             <a href="/public/index.php/pingOkDansBDD">Ping Total</a>
           <!-- Ping Update -->
-            <a href="/public/index.php/ipUpdate"><img class="icoNiveau1" src="/assets/img/Refresh.png" alt="Update" title="Mise a jour"></a>
+            <a href="/public/index.php/ipUpdatePing"><img class="icoNiveau1" src="/assets/img/Refresh.png" alt="Update Ping" title="Mise a jour avec ping"></a>
+            <a href="/public/index.php/ipUpdateCron"><img class="icoNiveau1" src="/assets/img/RefreshCron.png" alt="Update Cron" title="Mise a jour avec cron"></a>
 
           <!-- Drop down 1 --> 
           <ul class="niveau1 ">

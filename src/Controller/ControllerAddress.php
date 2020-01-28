@@ -25,7 +25,7 @@ class ControllerAddress extends Controller
             $date = $ipAddress->getDateDernOn();
         }
 
-        if (empty($date)){ $_SESSION['date'] = ""; } else {$_SESSION['date'] = "$date";;}
+        // if (empty($date)){ $_SESSION['date'] = ""; } else {$_SESSION['date'] = "$date";;}
         // $_SESSION['date'] = "$date";
 
         return $this->render("app/index.html.php", [
@@ -265,6 +265,7 @@ class ControllerAddress extends Controller
         }
 
 
+    
     //Create IpAddress
     public function createIpAddress()
     {
@@ -367,10 +368,10 @@ class ControllerAddress extends Controller
                     $chars5 = ($chars[5]);
                     $charsexp1 = explode("(",$chars5);
                     $charsexp2 = explode(")",$charsexp1[1]);
-                    echo ("IP = " . $charsexp2[0] . "<br>");
+                    echo ($charsexp2[0] . "<br>");
                 } else {
                     if ($chars[4][0] == 1) {
-                        echo ("IP = " . $chars[4] . "<br>");
+                        echo ($chars[4] . "<br>");
                     } 
                 }
             }                    
@@ -380,8 +381,50 @@ class ControllerAddress extends Controller
         ]);
     }
 
+    //Update nmap IpAddress venu de cron
+    public function updateIpAddressCron()
+    {
+        $fichier = file("/home/florian/www/lorge.org/www/IpAddress/data/nmap-cron.txt");
+        for ($RESEAU = 0; $RESEAU <= $NbrDeReseauAController; $RESEAU++)
+        {
+            for ($IP = 1; $IP <=255; $IP++)
+            {
+                exec("timeout 0.025 ping -c1 192.168.$RESEAU.$IP", $output, $Status); 
+                {
+                    $date = date("Y-m-d H:i");
+                    if ($Status == 0){    
+                        $ipNum = ip2long("192.168.$RESEAU.$IP");                       
+                        $sql = "INSERT INTO IpAddress VALUE ('', '192.168.$RESEAU.$IP', 'OK', '$date', '', '$ipNum', '', '', '') ON DUPLICATE KEY UPDATE status = 'OK', date_dern_on = '$date', date_ko = ''";
+                        $pdo = $this->getPdo();
+                        $sth = $pdo->prepare($sql);
+                        $sth->execute();
+
+                        $response = $this->getResponse();
+                        $response->setHeader([
+                            "Location" => "Controller.php"
+                        ]);                                               
+                        // return $response;
+                    }  else  {   
+                        $sql = "UPDATE IpAddress SET date_ko = '$date', status = 'Ko' WHERE ip = '192.168.$RESEAU.$IP' AND status = 'OK' ";
+                        $pdo = $this->getPdo();
+                        $sth = $pdo->prepare($sql);
+                        $sth->execute();                            
+                        $response = $this->getResponse();                                                    
+                    }
+                }
+            }
+        }
+
+        //pour mettre dans une session la date et l'heure de la mise à  jour que récupération dans baseOpen.html.php
+        {
+            $date = date("Y-m-d H:i:s");
+            $_SESSION['date'] = $date;
+        }
+        header('Location: ../../public/index.php/freeIp');
+    }
+
     //Update IpAddress
-    public function updateIpAddress()
+    public function updateIpAddressPing()
     {
         for ($RESEAU = 0; $RESEAU <= $NbrDeReseauAController; $RESEAU++)
         {
@@ -413,17 +456,15 @@ class ControllerAddress extends Controller
             }
         }
        
-        //pour mettre dans une session la date et l'heure de la mise à jour que récupération dans baseOpen.html.php
+        //pour mettre dans une session la date et l'heure de la mise Ã  jour que rÃ©cupÃ©ration dans baseOpen.html.php
         {
-            $pdo = $this->getPdo();
-            $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name FROM IpAddress ORDER BY ip_Num';
-            $sth = $pdo->prepare($sql);
-            $sth->execute();
-            $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
-    
-            foreach($ipAddresses as $ipAddress) {
-                $date = $ipAddress->getDateDernOn();
-            }
+            // $pdo = $this->getPdo();
+            // $sql = 'SELECT ip, status, date_dern_on, date_ko, type_mat, name, detail FROM IpAddress ORDER BY ip_Num';
+            // $sth = $pdo->prepare($sql);
+            // $sth->execute();
+            // $ipAddresses =  $sth->fetchAll(\PDO::FETCH_CLASS, IpAddress::class);
+
+            $date = date('Y-m-d H:i:s');
             $_SESSION['date'] = "$date";
         }
         header('Location: ../../public/index.php/freeIp');
