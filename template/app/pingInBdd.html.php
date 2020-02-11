@@ -17,7 +17,6 @@ require_once '../../src/Http/Response.php';
 
 $response = new Response;
 $createIp = new ControllerAddress($response);
-// $createIp->deleteIpAddressAll();
 $createIp->createIpAddress();
 
 header('Location: ../../public');

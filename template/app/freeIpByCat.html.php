@@ -44,6 +44,7 @@
          
      $numberIpKoSurv = 0;
      ?>
+
      <table class="borderIpKoNoNormal"> 
           <h4>
                <u> Adresses <b style="color:red"> Ip Ping Ko</b> A surveiller</u>
@@ -59,8 +60,7 @@
           {
                if ($ipBdd[$i]["ip"] == $ipFreeArray[$o]["ip"])
                {
-                    ?> 
-                    <?php if ($m == $t ){
+                    if ($m == $t ){
                     ?> </tr><tr> <?php
                          $m += $NbrColonne;
                          $t++;
@@ -90,7 +90,7 @@
                          <?php
                          $numberIpKoSurv++;
                     } else {
-                         $t++;
+                         $t--;
                     }
                     $i++;
                }
@@ -422,7 +422,7 @@
                </tr>
                <tr>
                     <td class="borderTab" style="background:#66BBFF">
-                         Ip non vue
+                         <a href="#ipNotView" style="color:black">Ip non vue</a>
                     </td>
                     <td class="borderTab" style="background:#66BBFF">
                          <?php echo $numberIpKoNotView; ?>
@@ -430,7 +430,7 @@
                </tr>
                <tr>
                     <td class="borderTab bckgroundKoNormal" style="color:black">
-                         Ip ko non critique
+                         <a href="#dataIpKoNormal" style="color:black">Ip ko non critique</a>
                     </td>
                     <td class="borderTab bckgroundKoNormal" style="color:black">
                          <?php echo $numberIpKoN; ?>
@@ -438,7 +438,7 @@
                </tr>
                <tr>
                     <td class="borderTab bckgroundOk" style="color:black">
-                    Ip Ok
+                         <a href="#dataIpOk" style="color:black">Ip Ok</a>
                     </td>
                     <td class="borderTab bckgroundOk" style="color:black">
                          <?php echo $numberIpOk; ?>
@@ -452,7 +452,7 @@
                          <?php echo ($numberIpKoNotView + $numberIpKoN + $numberIpKoSurv + $numberIpOk); ?>
                     </td>
                     <td class="borderTab" style="font-weight:bold">
-                         <?php echo ($NbrIp-($numberIpKoNotView + $numberIpKoN + $numberIpKoSurv + $numberIpOk)); ?>
+                         <?php echo (($NbrIp+1)-($numberIpKoNotView + $numberIpKoN + $numberIpKoSurv + $numberIpOk)); ?>
                     </td>
                     <td class="borderTab" style="font-weight:bold">
                          <?php echo (($numberIpKoNotView + $numberIpKoN + $numberIpKoSurv + $numberIpOk) + ($NbrIp-($numberIpKoNotView + $numberIpKoN + $numberIpKoSurv + $numberIpOk))); ?>

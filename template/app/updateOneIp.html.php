@@ -27,7 +27,7 @@
 								</tr>
 								<tr>
 									<td>Nom : </td>
-									<td><input type="text" name="name" value="<?php echo $ipAddress->getName() ?>"></td>
+									<td><input type="text" name="name" value="<?php echo $ipAddress->getName() ?>" autofocus></td>
 								</tr>
 								<tr>
 									<td>Type : </td>
@@ -35,7 +35,7 @@
 								</tr>
 								<tr>
 									<td>Détail : </td>
-									<td><input type="text" name="typeMat" value="<?php echo $ipAddress->getDetail() ?>"></td>
+									<td><input type="textarea" name="detail" value="<?php echo $ipAddress->getDetail() ?>"></td>
 								</tr>
 
 								<tr>
@@ -43,35 +43,23 @@
 								</tr>
 
 								<tr>
-									<td>Date du dernier Ok : </td>
-									<td><input type="text" name="dateDernOn" value="<?php echo $ipAddress->getDateDernOn() ?>"></td>
+									<td>Date découverte : </td>	
+									<td><input readonly type="text" name="dateDecouvert" style="background-color:#EBEBE4" value="<?php echo date('l : d F Y', strtotime($ipAddress->getDateDecouvert())) ?>"></td><td><img style="width:1.5rem" src="/assets/img/arrow-right.png"  alt=""></td><td><input readonly type="text" name="dateDecouvert" style="background-color:#EBEBE4" value="<?php echo 'at ' . date('H:i', strtotime($ipAddress->getDateDecouvert())) . ' hour(s)' ?>"></td>
 								</tr>
-								<tr>
-									<td>Heure dernier Ok : </td>
-									<td><input readonly type="text" name="" style="background-color:#EBEBE4" value="Voir ci-dessus"></td>
-								</tr>
-
 								<tr>
 									<td style="height:10px"></td>
+								</tr>
+								<tr>
+									<td>Date du dernier Ok : </td>
+									<td><input type="text" name="dateDernOn" value="<?php echo $ipAddress->getDateDernOn() ?>"></td><td><img style="width:1.5rem" src="/assets/img/arrow-right.png"  alt=""></td><td><input readonly type="text" name="" style="background-color:#EBEBE4" value="Voir ci-contre"></td>
 								</tr>
 
 								<tr>
 									<td><?php if ($ipAddress->getStatus() == "OK") {echo "";} else { echo "Date du Ko : " ;}; ?> </td>
-									<td>
-										<?php if ($ipAddress->getStatus() == "OK") { ?>									
-										<?php } else { ?>
-											<input type="text" name="dateKo" value="<?php if ($ipAddress->getStatus() == "OK") {echo "";} else {echo $ipAddress->getDateKo();}; ?>">
-										<?php } ?>
-									</td>
-								</tr>
-								<tr>
-									<td><?php if ($ipAddress->getStatus() == "OK") {echo "";} else { echo "Heure du Ko : " ;}; ?> </td>
-									<td>
-										<?php if ($ipAddress->getStatus() == "OK") { ?>									
-										<?php } else { ?>
-											<input type="text" name="" style="background-color:#EBEBE4" value="Voir ci-dessus">
-										<?php } ?>
-									</td>
+									<?php if ($ipAddress->getStatus() == "OK") { ?>									
+									<?php } else { ?>
+										<td><input type="text" name="dateKo" value="<?php if ($ipAddress->getStatus() == "OK") {echo "";} else {echo $ipAddress->getDateKo();}; ?>"></td><td><img style="width:1.5rem" src="/assets/img/arrow-right.png"  alt=""></td><td><input type="text" name="" style="background-color:#EBEBE4" value="Voir ci-contre"></td>
+									<?php } ?>
 								</tr>
 							</table>						
 						</td>
@@ -82,7 +70,7 @@
 		</table>
 
 		<table style="margin:auto">
-				<td><button type="submit" ><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>"></td>
+			<td><button type="submit" ><img class="iconValidate" src="/assets/img/Apply.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>"></td>
 		</table>
 
 	</form>

@@ -15,7 +15,7 @@
           <DIV>
           <br>
                <FORM ACTION="../../public/index.php/resultSearch" METHOD="POST">
-                    <INPUT TYPE="text" NAME="name" style="font-size:1.5em; text-align:center; font-weight:bold">
+                    <INPUT TYPE="text" NAME="name" style="font-size:1.5em; text-align:center; font-weight:bold" value="192.168.0." autofocus>
                <BR><BR><br>
 			<td><button type="submit"><img class="iconValidate" src="/assets/img/Apply.png" alt="Search" title="Rechercher"></td>
                </CENTER>

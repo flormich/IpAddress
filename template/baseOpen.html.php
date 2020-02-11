@@ -13,7 +13,7 @@
       <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
       <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css">
       <link rel="stylesheet" href="/assets/css/tuiles.css">
-      <link rel="stylesheet" href="/assets/css/essai.css">
+      <link rel="stylesheet" href="/assets/css/remplaceText.css">
       <link rel="stylesheet" href="/assets/css/dropdown.css">
       <link rel="stylesheet" href="/assets/css/ipFree.css">
 
@@ -24,16 +24,17 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header backgroundPage" >
       <div class="mdl-card mdl-cell mdl-cell--12-col backgroundPage">
         <header class="mdl-layout__header">
-          <div class="mdl-layout__header-row">
+          <div class="mdl-layout__header-row" style="padding-left:40px">
 
           <!-- home -->
             <a href="/public/"><img class="icoNiveau1" src="/assets/img/Home.png" alt="Homepage" title="Homepage"></a>
           <!-- Ping total -->
             <!-- <a class="mdl-navigation__link"  href="/template/app/pingTotalite.html.php">Ping Total</a> -->
-            <a href="/public/index.php/pingOkDansBDD">Ping Total</a>
+            <!-- <a href="/public/index.php/pingOkDansBDD">Ping Total</a> -->
+            <a style="padding-left: 30px"> </a>
           <!-- Ping Update -->
-            <a href="/public/index.php/ipUpdatePing"><img class="icoNiveau1" src="/assets/img/Refresh.png" alt="Update Ping" title="Mise a jour avec ping"></a>
-            <a href="/public/index.php/ipUpdateCron"><img class="icoNiveau1" src="/assets/img/RefreshCron.png" alt="Update Cron" title="Mise a jour avec cron"></a>
+            <a href="/public/index.php/ipUpdatePing"><img class="icoNiveau1" src="/assets/img/Refresh.png" alt="Update Ping" title="Mise à jour avec ping"></a>
+            <a href="/public/index.php/ipUpdateCron"><img class="icoNiveau1" src="/assets/img/RefreshCron.png" alt="Update Cron" title="Mise à jour avec cron"></a>
 
           <!-- Drop down 1 --> 
           <ul class="niveau1 ">
@@ -105,7 +106,7 @@
                 </li>
 
                 <li>
-                  <a href="/public/index.php/freeIp"><img class="icoNiveau2" src="/assets/img/freeCat.png" alt="All IpAddress" title="Tous les ip"></a> : Tous les Ip                               
+                  <a href="/public/index.php/freeIp"><img class="icoNiveau2" src="/assets/img/freeCat.png" alt="All IpAddress" title="Tous les ip"></a> : Tous les Ip     
                 </li>
                 <li>
                   <a href="/public/index.php/freeIpByCat"><img class="icoNiveau2" src="/assets/img/free.png" alt="State Ip" title="Ip par état de connexion"></a> : Par cat conn 
@@ -115,12 +116,30 @@
           </ul>
 
           <!-- trial -->
-            <a href="/public/index.php/trial"><img class="icoNiveau1" src="/assets/img/free.png" alt="TrialPage" title="TrialPage"></a>
+            <!-- <a href="/public/index.php/trial"><img class="icoNiveau1" src="/assets/img/free.png" alt="TrialPage" title="TrialPage"></a> -->
 
           <!-- Space between left icon and dernier ping text -->
             <div class="mdl-layout-spacer"></div>
             <b style="text-align:center"> 
-              <?php echo "Dernier Ping effectué le :" . "<br>" . date('d/m/Y', strtotime($_SESSION['date'])). "<br>" . date('H:i', strtotime($_SESSION['date'])); ?> 
+              <?php
+              if (!isset($_SESSION['tool']))
+              { 
+                $tools = 'Non Actualisé (Dernier on sur Box) : '; 
+                foreach ($ipAddresses as $key=>$ipAddress) 
+                {
+                  $ipBdd[] = [
+                    'ip' => $ipAddress->getIp(),
+                    'dateDernOn' => $ipAddress->getDateDernOn(),
+                  ];
+                }
+                $key = array_search('192.168.0.254', array_column($ipBdd, 'ip'));
+                $result = ($tools . "<br>" . date('d/m/Y', strtotime($ipBdd[$key]['dateDernOn'])) . "<br>" . date('H:i', strtotime($ipBdd[$key]['dateDernOn'])));
+              } else {
+                $tools = $_SESSION['tool'] . " effectué le :";
+                $date = $_SESSION['date'];
+                $result = ($tools . "<br>" . date('d/m/Y', strtotime($date)). "<br>" . date('H:i', strtotime($date))); 
+              }
+              echo $result; ?>
             </b>
           
           <!-- Space between left icon and right icon-->
@@ -128,7 +147,7 @@
           
           <!-- Left icon -->
           <!-- Delete Toute la BDD -->
-            <!-- <a  href="/public/index.php/deleteAll"><img class="ico" src="/../assets/img/Trash.png" alt="Delete la BDD" title="Delete la BDD" ></a> -->
+            <!-- <a  href="/public/index.php/deleteAll"><img class="ico" src="/../assets/img/Trash.png" alt="Delete la BDD" title="Delete la BDD" onclick="return confirm('Etes-vous s�r de vouloir supprimer toute la BDD ?')"></a> -->
             <a href="../../../template/app/search.html.php"><img class="ico" src="/assets/img/Search.png" alt="search" title="Rechercher" style="width:2.3rem"></a>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable

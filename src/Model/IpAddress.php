@@ -7,6 +7,7 @@ class IpAddress
     private $ip;
     private $id;
     private $status;
+    private $date_decouvert;
     private $dateDernOn;
     private $date_dern_on;
     private $dateKo;
@@ -163,7 +164,7 @@ class IpAddress
 
 
     /**
-     * Get the value of typeMat
+     * Get the value of detail
      */ 
     public function getDetail()
     {
@@ -178,6 +179,26 @@ class IpAddress
     public function setDetail(string $detail)
     {
         $this->detail = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of dateDecouvert
+     */ 
+    public function getDateDecouvert()
+    {
+        return $this->date_decouvert;
+    }
+
+    /**
+     * Set the value of dateDecouvert
+     *
+     * @return  self
+     */ 
+    public function setDateDecouvert($dateDecouvert)
+    {
+        $this->dateDecouvert = $dateDecouvert;
 
         return $this;
     }

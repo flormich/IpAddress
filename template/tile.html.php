@@ -76,14 +76,29 @@
 					{
 						if($ipAddress->getStatus() == 'OK')
 						{
-							echo "" . "<br>";
-							echo date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn()));											
+							?><span class="infobulleDiscovery">												
+								<span class="text-hover-discovery">
+									<?php echo "Découvert le : " . date('d/m/Y', strtotime($ipAddress->getDateDecouvert())). "<br>" . date('H:i', strtotime($ipAddress->getDateDecouvert())); ?>
+								</span>												
+								<span class="text-base-discovery">										
+									<?php echo "Ok le :" . "<br>" . date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn())); ?>
+								</span>
+							</span></<span><?php
 						} else {
-							echo "Dernier ping OK : " . "<br>";
-							echo date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn()));											
+							?><span class="infobulleDiscovery">												
+								<span class="text-hover-discovery">
+									<?php echo "Découvert le : " . date('d/m/Y', strtotime($ipAddress->getDateDecouvert())). "<br>" . date('H:i', strtotime($ipAddress->getDateDecouvert())); ?>
+								</span>												
+								<span class="text-base-discovery">										
+									<?php echo "Dernier ping Ok " . "<br>" . date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn())); ?>
+								</span>
+							</span></<span><?php
+
+							// echo "Dernier ping OK : " . "<br>";
+							// echo date('d/m/Y', strtotime($ipAddress->getDateDernOn())). "<br>" . date('H:i', strtotime($ipAddress->getDateDernOn()));											
 						}																				
 					} else {
-						echo " No date";
+						echo " No date" . "<br><br>";
 					}
 					?>
 						<br>
@@ -130,7 +145,7 @@
 
 			<tr class="heightDelete">
 				<td>
-					<a href="/public/index.php/delete/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="/assets/img/Full Trash.png" alt="delete" title="Delete de <?= $ipAddress->getIp()?>" ></a>
+					<a href="/public/index.php/delete/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="/assets/img/Full Trash.png" alt="delete" title="Delete de <?= $ipAddress->getIp();?>" onclick="return confirm('Etes-vous sûr de vouloir supprimer l\' adresse de : <?= $ipAddress->getName() . " soit l\' IP N° : " . $ipAddress->getIp() ?> ?')"></a>
 					<a href="/public/index.php/edit/<?= $ipAddress->getIp()?>"> <img class="icoDroit" src="/assets/img/edit_2.png" alt="edit" title="Edit de <?= $ipAddress->getIp()?>" ></a>
 					<?php 
 					if ($ipAddress->getTypeMat() == 'Imprimante' OR ($ipAddress->getTypeMat() == 'SRV') OR ($ipAddress->getTypeMat() == 'Etiquette') OR ($ipAddress->getTypeMat() == 'BOX') OR ($ipAddress->getTypeMat() == 'Routeur') OR ($ipAddress->getTypeMat() == 'Switch') OR ($ipAddress->getTypeMat() == 'Scanner') OR (($ipAddress->getTypeMat() == 'Zebra'))) 

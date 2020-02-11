@@ -2,7 +2,7 @@
 //Affichage
 $NbrIpParCat = 0; 
 $NbrIp = 255;
-$NbrColonne = 11;    
+$NbrColonne = 9;    
 
 
 //Controller
